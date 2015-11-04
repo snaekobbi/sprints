@@ -1,0 +1,72 @@
+@namespace svg "http://www.w3.org/2000/svg";
+
+#top,
+#middle,
+#bottom,
+#issues {
+  position: absolute;
+  padding: 0;
+  overflow: hidden;
+  left: 20px;
+  right: 20px;
+}
+#top {
+  height: 70px;
+}
+#middle {
+  top: 81px;
+  bottom: 225px;
+}
+#bottom {
+  bottom: 140px;
+  height: 90px;
+  font-size: 14px;
+}
+#issues {
+  bottom: 10px;
+  height: 120px;
+  font-family: "Tahoma";
+  font-size: 11px;
+  overflow: scroll;
+}
+#issues ul {
+  margin: 0;
+  padding: 0;
+  display: block;
+  float: left;
+}
+#issues ul + ul {
+  margin-left: 5px;
+  border-left: 1px solid black;
+  padding-left: 5px;
+}
+#issues li {
+  display: block;
+  margin: 2px;
+  padding: 0;
+  float: left;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+#issues li.selected {
+  background-color: #bbbbbb;
+}
+#issues li a {
+  display: block;
+  margin: 0;
+  padding: 5px;
+  width: 90px;
+  height: 90px;
+  text-decoration: none;
+  color: inherit;
+}
+svg|text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
