@@ -1,0 +1,238 @@
+# ---------------------------------------------------------------
+# ------------ SPRINT 5 -----------------------------------------
+# ---------------------------------------------------------------
+- id: spr5_start
+  desc: "Start of sprint #5"
+  time: 2015-11-05
+- id: spr5_release_v1_4_0
+  desc: "Software update v1.4.0"
+  time: 2015-11-18
+- id: spr5_test_results
+  desc: "All test results must be submitted"
+  time: 2015-11-21
+- id: spr5_release_v1_4_1
+  desc: "Second software update v1.4.1"
+  time: 2015-11-25
+- id: spr5_end
+  desc: "End of sprint #5"
+  time: 2015-11-27
+
+# print page ranges ---------------------------------------------
+- id: spr5_print_page_range_css_spec
+  desc: "Enhance CSS spec to support print page ranges"
+  after: [spr5_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/82
+    - snaekobbi/braille-css-spec/issues/17
+- id: spr5_print_page_range_css_examples
+  desc: "Examples of print page ranges in CSS spec"
+  after: [spr5_print_page_range_css_spec]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/braille-css-spec/issues/17
+- id: spr5_print_page_range_test_obfl
+  desc: "Test Joel's recent OBFL/Dotify additions to support print page ranges (incl./especially edge cases)"
+  after: [spr5_start]
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/joeha480/obfl/issues/24
+- id: spr5_print_page_range_impl
+  desc: "Support print page ranges in css-to-obfl"
+  after:
+    - spr5_print_page_range_test_obfl
+    - spr5_print_page_range_css_spec
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/82
+
+# page break control --------------------------------------------
+- id: spr5_page_break_control_impl_dotify
+  desc: "Finish Dotify work for full page break control (incl. orphans/widows)"
+  after: [spr5_start]
+  assignees: [joeha480]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/58
+    - https://github.com/joeha480/dotify/issues/101
+- id: spr5_page_break_control_impl_dp2
+  desc: "Implement and test full page break control in css-to-obfl"
+  after: [spr5_page_break_control_impl_dotify]
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/58
+
+# volume splitting ----------------------------------------------
+- id: spr5_volume_breaking_css_spec
+  desc: "Possibly enhance CSS spec to support content in volume frontmatter/backmatter"
+  after: [spr5_start]
+  assignees: [bertfrees]
+- id: spr5_volume_breaking_impl_dp2
+  desc: "Support for basic volume splitting in CSS parser and CSS-to-OBFL"
+  after: [spr5_volume_breaking_css_spec]
+  assignees: [dkager]
+
+# integration of SBS translator ---------------------------------
+- id: spr5_integrate_sbs_translator
+  desc: "Integrate SBS translator"
+  after: [spr5_start]
+  assignees: [egli]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/128
+    - https://github.com/snaekobbi/sprints/issues/130
+    - https://github.com/snaekobbi/pipeline-mod-sbs/issues/2
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/37
+
+# templates -----------------------------------------------------
+- id: spr5_templates_webui
+  desc: "Implement templates in web UI"
+  after: [spr5_start]
+  assignees: [josteinaj]
+
+# mtm production ready system -----------------------------------
+- id: spr5_gui_option_validation
+  desc: "Option validation in GUI, incl. support for enum datatypes"
+  after: [spr5_start]
+- id: spr5_dtbook_validation
+  desc: "DTBook validation"
+  after: [spr5_start]
+  issues:
+  - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
+- id: spr5_pef_validation
+  desc: "PEF validation"
+  after: [spr5_start]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
+
+# release -------------------------------------------------------
+- id: spr5_integration_v1_4_0
+  desc: "Integration and release of v1.4.0"
+  after:
+    - spr5_print_page_range_impl
+    - spr5_page_break_control_impl_dp2
+    - spr5_volume_breaking_impl_dp2
+    - spr5_integrate_sbs_translator
+    - spr5_letter_spacing_impl
+  before: spr5_release_v1_4_0
+  assignees: [bertfrees]
+- id: spr5_webui_release
+  desc: "Release a new version of the web UI incl. templates support"
+  after:
+    - spr5_templates_webui
+    - spr5_gui_option_validation
+  assignees: [josteinaj]
+- id: spr5_integration_v1_4_1
+  desc: "Integration and release of v1.4.1"
+  after:
+    - spr5_webui_release
+    - spr5_dtbook_validation
+    - spr5_pef_validation
+  before: spr5_release_v1_4_1
+  assignees: [bertfrees]
+
+# system tests --------------------------------------------------
+- id: spr5_system_tests
+  desc: "Perform system tests (page break control and print page ranges)"
+  after: [spr5_release_v1_4_0]
+  before: spr5_test_results
+  assignees:
+    - mixa72
+    - stesk
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/58
+- id: spr5_system_tests_celia
+  desc: "Do system test from sprint #4"
+  after: [spr5_start]
+  before: spr5_test_results
+  assignees: [paivis]
+- id: spr5_test_report
+  desc: "Make test report"
+  after: [spr5_test_results]
+  before: spr5_end
+  assignees: [denisviro]
+
+# liblouis ------------------------------------------------------
+- id: spr5_liblouis_merge_preparation_call
+  desc: "Preparation of integration of capitals/emphasis/numbers work"
+  after: [spr5_start]
+  before: spr5_end
+  assignees: [egli, dkager, bertfrees]
+  issues:
+    - https://github.com/liblouis/liblouis/issues/50
+
+# documentation -------------------------------------------------
+- id: spr5_website
+  desc: "Finish website prototype"
+  assignees: [bertfrees]
+  before: spr5_end
+
+# other
+- id: spr5_wiki_options
+  desc: "Wiki page with comparison of required script options"
+  after: [spr5_start]
+  before: spr5_end
+  assignees: []
+
+# ---------------------------------------------------------------
+# ------------ SPRINT 6 -----------------------------------------
+# ---------------------------------------------------------------
+- id: spr6_end
+  desc: "End of sprint #6"
+  time: 2015-12-25
+  
+# letter spacing ------------------------------------------------
+- id: spr6_letter_spacing_css_spec
+  desc: "Enhance CSS to support letter-spacing/word-spacing"
+  after: [spr5_end]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+    - https://github.com/snaekobbi/braille-css-spec/issues/15
+- id: spr6_letter_spacing_document_liblouis_text_segmentation
+  desc: "Properly document code in liblouis-core that deals with text segmentation"
+  after: [spr5_end]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr6_letter_spacing_liblouis_java_api
+  desc: "Possibly enhance Liblouis Java API for more advanced support for text segmentation"
+  after: [spr5_end]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr6_translator_api
+  desc: "Enhance translator API to support translation while formatting"
+  after: [spr5_end]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr6_letter_spacing_pretranslation
+  desc: "Decide whether letter spacing needs to be supported in combination with hyphenation/pre-translation, and find out how"
+  after: [spr5_end]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr6_letter_spacing_impl
+  desc: "Implement letter-spacing/word-spacing"
+  after:
+    - spr6_letter_spacing_css_spec
+    - spr6_letter_spacing_document_liblouis_text_segmentation
+    - spr6_letter_spacing_liblouis_java_api
+    - spr6_translator_api
+    - spr6_letter_spacing_pretranslation
+  before: spr6_end
+  issues:
+   - https://github.com/snaekobbi/sprints/issues/15
+   - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
+
+# liblouis
+- id: spr6_liblouis_merge
+  desc: "Integrate work on capitals/emphasis/numbers incl. regression testing"
+  after:
+    - spr5_end
+    - spr5_liblouis_merge_preparation_call
+  before: spr6_end
+  assignees: [egli, dkager]
+  issues:
+    - https://github.com/liblouis/liblouis/issues/50
