@@ -18,48 +18,18 @@
 ;;              (next more))
 ;;       acc)))
 
-(defn clear []
-  (doall (map remove-elem (elems-by-tag "div"))))
-
 ;; TODO detect circular deps!
 ;; TODO detect duplicate ids
 ;; TODO detect tasks without :after
 ;; TODO detect tasks and with no :before or next task 
 (defn draw [tasks]
-  (clear)
-  (clear)
-  (clear)
   (let [now (.now js/Date)
-        div1 (.createElement js/document "div")
-        div2 (.createElement js/document "div")
-        div3 (.createElement js/document "div")]
-    (.appendChild (.-body js/document) div1)
-    (.appendChild (.-body js/document) div2)
-    (.appendChild (.-body js/document) div3)
-    (set! (.-style div1)
-          "padding: 0;
-           position: absolute;
-           left: 100px;
-           right: 100px;
-           height: 50px;
-           overflow: hidden;")
-    (set! (.-style div2)
-          "border: 1px solid black;
-           padding: 0;
-           position: absolute;
-           top: 63px;
-           left: 100px;
-           right: 100px;
-           bottom: 215px;
-           overflow: hidden;")
-    (set! (.-style div3)
-          "padding: 0;
-           position: absolute;
-           left: 100px;
-           right: 100px;
-           bottom: 10px;
-           height: 200px;
-           overflow: scroll;")
+        div1 (elem-by-id "top")
+        div2 (elem-by-id "middle")
+        div3 (elem-by-id "bottom")]
+    (set! (.-innerHTML div1) "")
+    (set! (.-innerHTML div2) "")
+    (set! (.-innerHTML div3) "")
   (let [tasks-and-milestones tasks
         {milestones true tasks false} (group-by is-milestone? tasks-and-milestones)
         paths ;; milestone to milestone paths

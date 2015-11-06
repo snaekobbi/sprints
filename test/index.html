@@ -7,16 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-	<script src="../resources/js/raphael-min.js"></script>
-	<script src="../resources/js/raphael-paragraph.js"></script>
-	<script src="../resources/js/raphael-animate-viewbox.js"></script>
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/js-yaml.js"></script>
+    <style>
+      #top {
+        padding: 0;
+        position: absolute;
+        left: 100px;
+        right: 100px;
+        height: 50px;
+        overflow: hidden;
+      }
+      #middle {
+        border: 1px solid black;
+        padding: 0;
+        position: absolute;
+        top: 63px;
+        left: 100px;
+        right: 100px;
+        bottom: 215px;
+        overflow: hidden;
+      }
+      #bottom {
+        padding: 0;
+        position: absolute;
+        left: 100px;
+        right: 100px;
+        bottom: 10px;
+        height: 200px;
+        overflow: scroll;
+      }
+    </style>
+    <script src="../resources/js/raphael-min.js"></script>
+    <script src="../resources/js/raphael-paragraph.js"></script>
+    <script src="../resources/js/raphael-animate-viewbox.js"></script>
+    <script src="../resources/js/jquery.min.js"></script>
+    <script src="../resources/js/js-yaml.js"></script>
     <script src="../target/cljsbuild/dev/goog/base.js"></script>
     <script src="../target/cljsbuild/dev.js"></script>
     <script>goog.require('app');</script>
-	<script>
-	  window.onload = app.graphical_view
-	</script>
+    <script>
+      window.onload = app.graphical_view
+    </script>
+    <div id="top"></div>
+    <div id="middle"></div>
+    <div id="bottom"></div>
   </body>
 </html>
