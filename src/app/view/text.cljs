@@ -22,11 +22,11 @@
        [:div#tasks
         [:ul
          (for [task tasks]
-           [:li {:id (name (:id task))}
+           [:li {:id (:id task)}
             [:h2 (task-to-string task)]
             (when-let [assignees (not-empty (:assignees task))]
               [:div "Assigned to: "
-               [:b (join ", " (map name assignees))]])
+               [:b (join ", " assignees)]])
             (when-let [after (not-empty
                               (concat (map #(get-task % tasks) (:after task))
                                       (filter #(= (:id task) (:before %)) tasks)))]
@@ -34,10 +34,10 @@
                [:ul
                 (for [task after]
                   [:li
-                   [:a {:href (str "#" (name (:id task)))}
+                   [:a {:href (str "#" (:id task))}
                     (task-to-string task)]
                    (when-let [assignees (not-empty (:assignees task))]
-                     `(" (" ~(join ", " (map name assignees)) ")"))])]])
+                     `(" (" ~(join ", " assignees) ")"))])]])
             (when-let [before (not-empty
                                (concat (filter #(some #{(:id task)} (:after %)) tasks)
                                        (map #(get-task % tasks) (remove nil? [(:before task)]))))]
@@ -45,10 +45,10 @@
                [:ul
                 (for [task before]
                   [:li
-                   [:a {:href (str "#" (name (:id task)))}
+                   [:a {:href (str "#" (:id task))}
                     (task-to-string task)]
                    (when-let [assignees (not-empty (:assignees task))]
-                     `(" (" ~(join ", " (map name assignees)) ")"))
+                     `(" (" ~(join ", " assignees) ")"))
                    (when-let [time (:time task)]
                      (str " (" time ")"))])]])
             (when-let [issues (not-empty (:issues task))]
@@ -56,7 +56,7 @@
                [:ul
                 (for [issue issues]
                   [:li
-                   (let [[_ _ owner repo _ number] (split issue #"/")]
+                   (let [[_ _ _ owner repo _ number] (split issue #"/")]
                      [:a {:href issue
                           :target "_blank"
                           :class "ghi"
