@@ -23,21 +23,21 @@
   after: [spr5_start]
   assignees: [bertfrees]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/138
     - snaekobbi/braille-css-spec/issues/17
 - id: spr5_print_page_range_css_examples
   desc: "Examples of print page ranges in CSS spec"
   after: [spr5_print_page_range_css_spec]
   assignees: [bertfrees]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/138
     - https://github.com/snaekobbi/braille-css-spec/issues/17
 - id: spr5_print_page_range_test_obfl
   desc: "Test Joel's recent OBFL/Dotify additions to support print page ranges (incl./especially edge cases)"
   after: [spr5_start]
   assignees: [jukkae]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/138
     - https://github.com/joeha480/obfl/issues/24
 - id: spr5_print_page_range_impl
   desc: "Support print page ranges in css-to-obfl"
@@ -46,7 +46,7 @@
     - spr5_print_page_range_css_spec
   assignees: [jukkae]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/138
 
 # page break control --------------------------------------------
 - id: spr5_page_break_control_impl_dotify
@@ -54,24 +54,34 @@
   after: [spr5_start]
   assignees: [joeha480]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/58
+    - https://github.com/snaekobbi/sprints/issues/137
     - https://github.com/joeha480/dotify/issues/101
 - id: spr5_page_break_control_impl_dp2
   desc: "Implement and test full page break control in css-to-obfl"
   after: [spr5_page_break_control_impl_dotify]
   assignees: [jukkae]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/58
+    - https://github.com/snaekobbi/sprints/issues/137
 
 # volume splitting ----------------------------------------------
 - id: spr5_volume_breaking_css_spec
   desc: "Possibly enhance CSS spec to support content in volume frontmatter/backmatter"
   after: [spr5_start]
   assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/68
+    - https://github.com/snaekobbi/sprints/issues/69
+    - https://github.com/snaekobbi/sprints/issues/70
+    - https://github.com/snaekobbi/sprints/issues/71
 - id: spr5_volume_breaking_impl_dp2
   desc: "Support for basic volume splitting in CSS parser and CSS-to-OBFL"
   after: [spr5_volume_breaking_css_spec]
   assignees: [dkager]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/68
+    - https://github.com/snaekobbi/sprints/issues/69
+    - https://github.com/snaekobbi/sprints/issues/70
+    - https://github.com/snaekobbi/sprints/issues/71
 
 # integration of SBS translator ---------------------------------
 - id: spr5_integrate_sbs_translator
@@ -79,8 +89,8 @@
   after: [spr5_start]
   assignees: [egli]
   issues:
-    - https://github.com/snaekobbi/sprints/issues/128
-    - https://github.com/snaekobbi/sprints/issues/130
+    - https://github.com/snaekobbi/sprints/issues/136
+    - https://github.com/snaekobbi/sprints/issues/139
     - https://github.com/snaekobbi/pipeline-mod-sbs/issues/2
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/37
 
@@ -89,16 +99,24 @@
   desc: "Implement templates in web UI"
   after: [spr5_start]
   assignees: [josteinaj]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/88
+    - https://github.com/snaekobbi/sprints/issues/89
+    - https://github.com/snaekobbi/sprints/issues/90
+    - https://github.com/snaekobbi/sprints/issues/91
 
 # mtm production ready system -----------------------------------
 - id: spr5_gui_option_validation
   desc: "Option validation in GUI, incl. support for enum datatypes"
   after: [spr5_start]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/4
+    - https://github.com/daisy/pipeline-framework/issues/84
 - id: spr5_dtbook_validation
   desc: "DTBook validation"
   after: [spr5_start]
   issues:
-  - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
 - id: spr5_pef_validation
   desc: "PEF validation"
   after: [spr5_start]
@@ -107,7 +125,7 @@
 
 # release -------------------------------------------------------
 - id: spr5_integration_v1_4_0
-  desc: "Integration and release of v1.4.0"
+  desc: "Integration, smoke test and release of v1.4.0"
   after:
     - spr5_print_page_range_impl
     - spr5_page_break_control_impl_dp2
@@ -140,8 +158,8 @@
     - mixa72
     - stesk
   issues:
-    - https://github.com/snaekobbi/sprints/issues/82
-    - https://github.com/snaekobbi/sprints/issues/58
+    - https://github.com/snaekobbi/sprints/issues/137
+    - https://github.com/snaekobbi/sprints/issues/138
 - id: spr5_system_tests_celia
   desc: "Do system test from sprint #4"
   after: [spr5_start]
