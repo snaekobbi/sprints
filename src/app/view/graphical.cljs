@@ -1,7 +1,8 @@
 (ns app.view.graphical
   (:require [app.github :as gh])
   (:use [app.util :only [elems-by-tag elem-by-id remove-elem]]
-        [clojure.string :only [join]] ;; why sometimes not working
+        [clojure.string :only [join split]] ;; why sometimes not working?
+        [jayq.core :only [$]]
         ))
 
 (defn get-task [id tasks]
@@ -194,10 +195,25 @@
                                    "More info:<ul>"
                                    (join "\n"
                                          (for [issue issues]
-                                           (str "<li><a href='" issue "' target='_blank'>" issue "</a></li>")))
+                                           (let [[_ _ _ owner repo _ number] (split issue #"/")]
+                                             (str "<li><a class='ghi' href='" issue "' target='_blank' "
+                                                  "owner='" owner "' repo='" repo "' number='" number "'>"
+                                                  issue
+                                                  "</a></li>"))))
                                    "</ul>")
                               html)]
-                   (set! (.-innerHTML div3) html))
+                   (let [div3 ($ div3)]
+                     (.html div3 html)
+                     (.each (.find div3 "a.ghi")
+                       (fn [] (this-as this
+                         (let [this ($ this)
+                               owner (.attr this "owner")
+                               repo (.attr this "repo")
+                               number (.attr this "number")]
+                           (gh/issue owner repo number
+                                     #(do (.text this (str "[" owner "/" repo "] " (:title %)))
+                                          (when-let [assignee (:assignee %)]
+                                            (.after this (str " (" assignee ")")))))))))))
                  (.animateViewBox paper1
                                   (+ (:x task) (/ (- (:width task) div-width) 2))
                                   0
