@@ -18,6 +18,27 @@
 ;;              (next more))
 ;;       acc)))
 
+(def bg-todo "#eee")
+(def bg-todo-selected "#aaa")
+(def bg-done "#dfd")
+(def bg-done-selected "#7d0")
+(def bg-ready "#ffd")
+(def bg-ready-selected "#fd0")
+
+(defn bg-color [task]
+  (if (:done task)
+    bg-done
+    (if (:ready task)
+      bg-ready
+      bg-todo)))
+
+(defn bg-color-selected [task]
+  (if (:done task)
+    bg-done-selected
+    (if (:ready task)
+      bg-ready-selected
+      bg-todo-selected)))
+
 ;; TODO detect circular deps!
 ;; TODO detect duplicate ids
 ;; TODO detect tasks without :after
@@ -30,8 +51,16 @@
     (set! (.-innerHTML div1) "")
     (set! (.-innerHTML div2) "")
     (set! (.-innerHTML div3) "")
-  (let [tasks-and-milestones tasks
-        {milestones true tasks false} (group-by is-milestone? tasks-and-milestones)
+  (let [{milestones true tasks false} (group-by is-milestone? tasks)
+        milestones
+        (for [milestone milestones]
+          (assoc milestone
+            :done (and (> now (:time milestone))
+                       (every? :done (filter #(= (:id milestone) (:before %)) tasks)))))
+        tasks
+        (for [task tasks]
+          (assoc task
+            :ready (every? :done (map #(get-task % (concat tasks milestones)) (:after task)))))
         paths ;; milestone to milestone paths
         (loop [paths (apply concat
                             (for [milestone milestones]
@@ -46,7 +75,7 @@
                        (apply concat
                               (for [path incomplete-paths]
                                 (for [t (:after (first path))]
-                                  (cons (get-task t tasks-and-milestones) path)))))))))
+                                  (cons (get-task t (concat tasks milestones)) path)))))))))
         paths (map #(map :id %) paths)
         tasks
         (for [task tasks]
@@ -59,6 +88,7 @@
             (assoc task
               :begin (+ start (* (- end start) (/ index length)))
               :end (+ start (* (- end start) (/ (+ index 1) length))))))
+        ;; sorting doesn't work?
         tasks (sort (fn [x y]
                       (if (< (:start x) (:start y))
                         true
@@ -94,8 +124,9 @@
         paper2 (js/Raphael div2 width height)]
     (.setViewBox paper1 0 0 width div1-height)
     (.setViewBox paper2 0 0 width height)
-    (.path paper2 (str "M" (/ div-width 2) "," 0
-                       "L" (/ div-width 2) "," div2-height))
+    (.attr (.path paper2 (str "M" (/ div-width 2) "," 0
+                              "L" (/ div-width 2) "," div2-height))
+           (clj->js {:stroke-width 2}))
     (let [milestones
           (loop [acc nil
                  milestones milestones]
@@ -107,7 +138,8 @@
                          (.attr
                           (.path paper2 (str "M" x "," 0
                                              "L" x "," div2-height))
-                          (clj->js {:stroke-dasharray "-"}))
+                          (clj->js {:stroke "#666"
+                                    :stroke-dasharray "-"}))
                          (.attr
                           (.path paper1 (str "M" x "," div1-height
                                              "L" (- x 10) "," (- div1-height 10)
@@ -115,7 +147,7 @@
                                              "L" (+ x 10) "," 1
                                              "L" (+ x 10) "," (- div1-height 10)
                                              "Z"))
-                          (clj->js {:fill "#999"}))))
+                          (clj->js {:fill (bg-color milestone)}))))
                      acc)
                (rest milestones))
               acc))
@@ -128,7 +160,8 @@
                        :rect
                        (let [{x :x y :y w :width h :height} task
                              rect (.attr (.rect paper2 x y w h)
-                                         (clj->js {:fill "#aaa"
+                                         (clj->js {:fill (bg-color task)
+                                                   :stroke "#666"
                                                    :title (:desc task)}))]
                          ;; FIXME make text unselectable!
                          (.attr (.paragraph paper2 (clj->js {:x (+ x 5)
@@ -152,9 +185,9 @@
        (for [task tasks]
          (set! (.-onclick (.-node (:rect task)))
                (fn []
-                 (doall (map #(.attr (:rect %) (clj->js {:fill "#aaa"})) tasks))
-                 (doall (map #(.attr (:path %) (clj->js {:fill "#aaa"})) milestones))
-                 (.attr (:rect task) (clj->js {:fill "#a60"}))
+                 (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
+                 (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
+                 (.attr (:rect task) (clj->js {:fill (bg-color-selected task)}))
                  (let [html (str "<h2>" (:desc task) "</h2>")
                        html (if-let [issues (not-empty (:issues task))]
                               (str html
@@ -181,8 +214,8 @@
                                   "<>")
                  (doall
                   (map #(if (is-milestone? %)
-                          (.attr (:path %) (clj->js {:fill "#b90"}))
-                          (.attr (:rect %) (clj->js {:fill "#b90"})))
+                          (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
+                          (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
                        (concat (map #(get-task % (concat tasks milestones)) (:after task))
                                (filter #(some #{(:id task)} (:after %)) tasks)
                                (map #(get-task % milestones) (remove nil? [(:before task)])))))))))
@@ -190,15 +223,15 @@
        (for [milestone milestones]
          (set! (.-onclick (.-node (:path milestone)))
                (fn []
-                 (doall (map #(.attr (:rect %) (clj->js {:fill "#999"})) tasks))
-                 (doall (map #(.attr (:path %) (clj->js {:fill "#999"})) milestones))
-                 (.attr (:path milestone) (clj->js {:fill "#a60"}))
+                 (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
+                 (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
+                 (.attr (:path milestone) (clj->js {:fill (bg-color-selected milestone)}))
                  (set! (.-innerHTML div3) (str "<h2>" (:desc milestone) "</h2>"
-                                               "Date: " (:time milestone)))
+                                               "Due date: " (:time milestone)))
                  (doall
                   (map #(if (is-milestone? %)
-                          (.attr (:path %) (clj->js {:fill "#b90"}))
-                          (.attr (:rect %) (clj->js {:fill "#b90"})))
+                          (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
+                          (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
                        (concat (filter #(or (some #{(:id milestone)} (:after %))
                                             (= (:id milestone) (:before %)))
                                        tasks))))))))
