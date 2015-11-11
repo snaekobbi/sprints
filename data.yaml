@@ -74,6 +74,7 @@
     - https://github.com/snaekobbi/sprints/issues/69
     - https://github.com/snaekobbi/sprints/issues/70
     - https://github.com/snaekobbi/sprints/issues/71
+  done: true
 - id: spr5_volume_breaking_impl_dp2
   desc: "Support for basic volume splitting in CSS parser and CSS-to-OBFL"
   after: [spr5_volume_breaking_css_spec]
