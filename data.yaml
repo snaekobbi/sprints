@@ -25,6 +25,7 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
     - snaekobbi/braille-css-spec/issues/17
+  done: true
 - id: spr5_print_page_range_css_examples
   desc: "Examples of print page ranges in CSS spec"
   after: [spr5_print_page_range_css_spec]
@@ -35,7 +36,7 @@
 - id: spr5_print_page_range_test_obfl
   desc: "Test Joel's recent OBFL/Dotify additions to support print page ranges (incl./especially edge cases)"
   after: [spr5_start]
-  assignees: [jukkae]
+  assignees: [jukkae, bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
     - https://github.com/joeha480/obfl/issues/24
@@ -109,6 +110,7 @@
 - id: spr5_gui_option_validation
   desc: "Option validation in GUI, incl. support for enum datatypes"
   after: [spr5_start]
+  assignees: [josteinaj]
   issues:
     - https://github.com/snaekobbi/pipeline-mod-mtm/issues/4
     - https://github.com/daisy/pipeline-framework/issues/84
