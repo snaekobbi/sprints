@@ -109,8 +109,8 @@
   done: true
 
 # mtm production ready system -----------------------------------
-- id: spr5_gui_option_validation
-  desc: "Option validation in GUI, incl. support for enum datatypes"
+- id: spr5_gui_options
+  desc: "Option validation in GUI, incl. support for enum datatypes, and default options"
   after: [spr5_start]
   assignees: [josteinaj]
   issues:
@@ -128,6 +128,13 @@
     - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
 
 # release -------------------------------------------------------
+- id: spr5_webui_release_templates
+  desc: "Release a new version of the web UI incl. templates support"
+  after:
+    - spr5_templates_webui
+  before: spr5_release_v1_4_0
+  assignees: [josteinaj]
+  done: true
 - id: spr5_integration_v1_4_0
   desc: "Integration, smoke test and release of v1.4.0"
   after:
@@ -138,16 +145,15 @@
     - spr5_letter_spacing_impl
   before: spr5_release_v1_4_0
   assignees: [bertfrees]
-- id: spr5_webui_release
-  desc: "Release a new version of the web UI incl. templates support"
+- id: spr5_webui_release_options
+  desc: "Release a new version of the web UI incl. option validation and default options"
   after:
-    - spr5_templates_webui
-    - spr5_gui_option_validation
+    - spr5_gui_options
+  before: spr5_release_v1_4_1
   assignees: [josteinaj]
 - id: spr5_integration_v1_4_1
   desc: "Integration and release of v1.4.1"
   after:
-    - spr5_webui_release
     - spr5_dtbook_validation
     - spr5_pef_validation
   before: spr5_release_v1_4_1
