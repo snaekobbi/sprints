@@ -45,7 +45,7 @@
   after:
     - spr5_print_page_range_test_obfl
     - spr5_print_page_range_css_spec
-  assignees: [jukkae]
+  assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
 
@@ -57,10 +57,11 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
     - https://github.com/joeha480/dotify/issues/101
+  done: true
 - id: spr5_page_break_control_impl_dp2
   desc: "Implement and test full page break control in css-to-obfl"
   after: [spr5_page_break_control_impl_dotify]
-  assignees: [jukkae]
+  assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
 
