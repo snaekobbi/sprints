@@ -33,6 +33,7 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
     - https://github.com/snaekobbi/braille-css-spec/issues/17
+  done: true
 - id: spr5_print_page_range_test_obfl
   desc: "Test Joel's recent OBFL/Dotify additions to support print page ranges (incl./especially edge cases)"
   after: [spr5_start]
