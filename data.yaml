@@ -64,6 +64,7 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
+  done: true
 
 # volume splitting ----------------------------------------------
 - id: spr5_volume_breaking_css_spec
@@ -79,7 +80,7 @@
 - id: spr5_volume_breaking_impl_dp2
   desc: "Support for basic volume splitting in CSS parser and CSS-to-OBFL"
   after: [spr5_volume_breaking_css_spec]
-  assignees: [dkager]
+  assignees: [bertfrees, dkager]
   issues:
     - https://github.com/snaekobbi/sprints/issues/68
     - https://github.com/snaekobbi/sprints/issues/69
@@ -146,6 +147,9 @@
     - spr5_letter_spacing_impl
   before: spr5_release_v1_4_0
   assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/140
+  done: true
 - id: spr5_webui_release_options
   desc: "Release a new version of the web UI incl. option validation and default options"
   after:
@@ -161,8 +165,8 @@
   assignees: [bertfrees]
 
 # system tests --------------------------------------------------
-- id: spr5_system_tests
-  desc: "Perform system tests (page break control and print page ranges)"
+- id: spr5_system_tests_page_breaking
+  desc: "Perform system tests for page break control"
   after: [spr5_release_v1_4_0]
   before: spr5_test_results
   assignees:
@@ -170,6 +174,14 @@
     - stesk
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
+- id: spr5_system_tests_page_breaking
+  desc: "Perform system tests for print page ranges"
+  after: [spr5_release_v1_4_0]
+  before: spr5_test_results
+  assignees:
+    - mixa72
+    - stesk
+  issues:
     - https://github.com/snaekobbi/sprints/issues/138
 - id: spr5_system_tests_celia
   desc: "Do system test from sprint #4"
