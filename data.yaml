@@ -40,6 +40,7 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
     - https://github.com/joeha480/obfl/issues/24
+  done: true
 - id: spr5_print_page_range_impl
   desc: "Support print page ranges in css-to-obfl"
   after:
@@ -48,7 +49,8 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
-
+  done: true
+    
 # page break control --------------------------------------------
 - id: spr5_page_break_control_impl_dotify
   desc: "Finish Dotify work for full page break control (incl. orphans/widows)"
@@ -65,7 +67,13 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
   done: true
-
+- id: spr5_page_break_control_css_examples
+  desc: "Examples of orphans and widows in CSS spec"
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/137
+  done: true
+  
 # volume splitting ----------------------------------------------
 - id: spr5_volume_breaking_css_spec
   desc: "Possibly enhance CSS spec to support content in volume frontmatter/backmatter"
@@ -165,18 +173,22 @@
   assignees: [bertfrees]
 
 # system tests --------------------------------------------------
-- id: spr5_system_tests_page_breaking
+- id: spr5_system_tests_page_break_control
   desc: "Perform system tests for page break control"
-  after: [spr5_release_v1_4_0]
+  after:
+    - spr5_release_v1_4_0
+    - spr5_page_break_control_css_examples
   before: spr5_test_results
   assignees:
     - mixa72
     - stesk
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
-- id: spr5_system_tests_page_breaking
+- id: spr5_system_tests_page_break_control
   desc: "Perform system tests for print page ranges"
-  after: [spr5_release_v1_4_0]
+  after:
+    - spr5_release_v1_4_0
+    - spr5_print_page_range_css_examples
   before: spr5_test_results
   assignees:
     - mixa72
