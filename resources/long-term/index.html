@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Schedule</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <style>
+      table#features {
+	    border-collapse: collapse
+      }
+      table#features td {
+        font-family: monospace;
+	    text-align: center;
+      }
+      table#features td:first-child,
+	  table#features td:nth-child(2) {
+        font-family: initial;
+	    text-align: left;
+	    vertical-align: top;
+      }
+      table#features th:last-child,
+      table#features td:last-child {
+        font-family: initial;
+	    text-align: right;
+	    vertical-align: top;
+      }
+	  table#features col.current-sprint {
+  	    border: 1px solid #555;
+	    border-top: none;
+	    background-color: #EEE;
+	  }
+	  .feature.todo {
+	  }
+	  .feature.planned {
+	  }
+	  .feature.in-progress {
+	    background-color: #EEDDFF;
+	  }
+	  .feature.ready-for-test,
+	  .feature.testing {
+	    background-color: #DDEEFF;
+	  }
+	  .feature.done {
+	    background: #DDFF99;
+	  }
+	  .issue {
+	    display: block;
+	    width: 40px;
+	  }
+	  .issue.pass a {
+	    background-color: #44BB11;
+	    color: white;
+	  }
+	  .issue.fail a {
+  	    background-color: #FF6655;
+	    color: white;
+	  }
+	  .issue a::before {
+	    content: " ";
+	  }
+	  .issue.closed a::before,
+	  .issue.pass a::before,
+	  .issue.fail a::before {
+	    content: "x";
+	  }
+	  .priority_1::after {
+	    content: "1";
+  	    vertical-align: super;
+	    font-size: 70%;
+	  }
+    </style>
+	<script src="../js/raphael-min.js"></script>
+	<script src="../js/raphael-paragraph.js"></script>
+	<script src="../js/raphael-animate-viewbox.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/js-yaml.js"></script>
+	<script src="../js/app.js"></script>
+	<script>
+	  window.onload = app.long_term.view
+	</script>
+  </body>
+</html>
