@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#heading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 7px 10px 0 10px;
+  background-color: white;
+}
+#features {
+  padding: 10px;
+}
+#heading table,
+#features table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#heading th {
+  padding-bottom: 5px;
+}
+#features tr:first-child td {
+  padding-top: 60px;
+}
+#features td {
+  font-family: monospace;
+  text-align: center;
+  vertical-align: top;
+  padding-bottom: 3px;
+}
+#heading th,
+#features td {
+  width: 40px;
+}
+#features td:first-child,
+#features td:nth-child(2) {
+  font-family: initial;
+  text-align: left;
+  width: auto;
+}
+#heading th:last-child,
+#features td:last-child {
+  font-family: initial;
+  text-align: right;
+  width: 150px;
+}
+#heading th {
+  border-left: 1px solid #EEE;
+}
+#features col {
+  border-left: 1px solid #EEE;
+}
+#heading th:first-child,
+#features col:first-child,
+#features col:nth-child(2) {
+  border-left: none;
+}
+#heading th.current-sprint,
+#features col.current-sprint {
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
+  border-top: none;
+  background-color: #EEE;
+}
+.feature.todo {
+}
+.feature.planned {
+}
+.feature.doing {
+  background-color: #EEDDFF;
+}
+.feature.on-hold,
+.feature.cancelled {
+  background-color: #FFDDDD;
+}
+.feature.ready-for-test,
+.feature.testing {
+  background-color: #DDEEFF;
+}
+.feature.done {
+  background: #DDFF99;
+}
+.issue.pass a {
+  background-color: #44BB11;
+  color: white;
+}
+.issue.fail a {
+  background-color: #FF6655;
+  color: white;
+}
+.issue a::before {
+  content: " ";
+}
+.issue.closed a::before,
+.issue.pass a::before,
+.issue.fail a::before {
+  content: "x";
+}
+/*
+.priority_1::after,
+.priority_2::after,
+.priority_3::after {
+  vertical-align: super;
+  font-size: 70%;
+}
+.priority_1::after {
+  content: "1";
+}
+.priority_2::after {
+  content: "2";
+}
+.priority_3::after {
+  content: "3";
+}
+*/

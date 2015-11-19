@@ -55,15 +55,15 @@
                                (assoc issue :priority priority)
                                issue)
                              issue
-                             (if-let [huboard-state (->> (:labels issue)
-                                                         (map #(re-matches #"([0-4]) - .+" %))
-                                                         (remove nil?)
-                                                         first
-                                                         rest
-                                                         first)]
-                               (assoc issue :huboard-state
+                             (if-let [state (->> (:labels issue)
+                                                 (map #(re-matches #"([0-4]) - .+" %))
+                                                 (remove nil?)
+                                                 first
+                                                 rest
+                                                 first)]
+                               (assoc issue :state
                                       (get [:todo :doing :ready-for-test :testing :done]
-                                           (js/parseInt huboard-state)))
+                                           (js/parseInt state)))
                                issue)]
                          issue))
               issues (filter #(re-matches #"\[[0-9]+\.[0-9]+\:[0-9]+[A-Z]?\] .+" (:title %)) issues)]
@@ -111,13 +111,15 @@
                                       (if (<= (:sprint (first issues)) current-sprint)
                                         (if (some #(or (:fail %) (:pass %)) issues)
                                           :testing
-                                          :in-progress)
+                                          :doing)
                                         :planned)
                                       (if (:pass (last issues))
                                         :done
                                         (if (some #(:sprint %) issues)
                                           (if (or (some #(not (:sprint %)) issues)
-                                                  (:fail (last issues)))
+                                                  (:fail (last issues))
+                                                  (= (:state (last issues)) :todo)
+                                                  (= (:state (last issues)) :doing))
                                             :on-hold
                                             :ready-for-test)
                                           :todo)))))))))]
@@ -128,52 +130,60 @@
     (.append
      ($/$ "body")
      ($/$ (html
-           [:table#features
-            [:colgroup
-             [:col {:span 2}]
-             (repeat (- current-sprint 1) [:col])
-             [:col {:class "current-sprint"}]]
-            [:thead
-             [:tr
-              [:th {:colspan 2} "Features"]
-              [:th {:colspan (+ 1 (count sprints))} "Sprints"]
-              [:th "State"]]
-             [:tr
-              [:th {:colspan 2}]
-              (for [sprint sprints]
-                [:th [:a {:href (str "https://github.com/snaekobbi/sprints/milestones/sprint%23" sprint)
-                          :target "blank_"} sprint]])
-              [:th "?"]
-              [:th]]]
-            [:tbody
-             (for [{number :number title :title state :state issues :issues} features]
-               [:tr {:class (join " " ["feature" (name state)])}
-                [:td [:a {:href (str "http://snaekobbi.github.io/requirements/#" number)
-                          :target "_blank"}
-                      number]]
-                [:td title]
-                (for [sprint (concat sprints [nil])]
-                  [:td
-                   (when-let [issue (first (filter #(= (:sprint %) sprint) issues))]
-                     (let [{number :number pass :pass fail :fail priority :priority closed :closed} issue]
-                       [:span {:class (join " "
-                                            (remove nil?
-                                                    ["issue"
-                                                     (when pass "pass")
-                                                     (when fail "fail")
-                                                     (when closed "closed")
-                                                     (when priority (str "priority_" priority))]))}
-                        "[" [:a {:href (str "https://github.com/snaekobbi/sprints/issues/" number)
-                                 :target "_blank"}] "]"]))])
-                [:td (case state
-                       :todo "To do"
-                       :planned ("Planned for sprint " (:sprint (first issues)))
-                       :in-progress "Under development"
-                       :ready-for-test "Ready for testing"
-                       :on-hold "On hold"
-                       :testing "Under test"
-                       :done "Done"
-                       :cancelled "Cancelled")]])]])))))
+           [:div
+            [:div#heading
+             [:table
+              [:tr
+               [:th {:colspan 2} "Feature"]
+               [:th {:colspan (+ 1 (count sprints))} "Sprint"]
+               [:th "State"]]
+              [:tr
+               [:th {:colspan 2}]
+               (for [sprint sprints]
+                 [:th (when (= sprint current-sprint) {:class "current-sprint"})
+                  [:a {:href (str "https://github.com/snaekobbi/sprints/milestones/sprint%23" sprint)
+                       :target "blank_"} sprint]])
+               [:th "?"]
+               [:th]]]]
+            [:div#features
+             [:table
+              [:colgroup
+               [:col]
+               [:col]
+               (repeat (- current-sprint 1) [:col])
+               [:col {:class "current-sprint"}]
+               (repeat (- (count sprints) current-sprint) [:col])
+               [:col]
+               [:col]]
+              [:tbody
+               (for [{number :number title :title state :state issues :issues} features]
+                 [:tr {:class (join " " ["feature" (name state)])}
+                  [:td [:a {:href (str "http://snaekobbi.github.io/requirements/#" number)
+                            :target "_blank"}
+                        number]]
+                  [:td title]
+                  (for [sprint (concat sprints [nil])]
+                    [:td
+                     (when-let [issue (first (filter #(= (:sprint %) sprint) issues))]
+                       (let [{number :number pass :pass fail :fail priority :priority closed :closed} issue]
+                         [:span {:class (join " "
+                                              (remove nil?
+                                                      ["issue"
+                                                       (when pass "pass")
+                                                       (when fail "fail")
+                                                       (when closed "closed")
+                                                       (when priority (str "priority_" priority))]))}
+                          "[" [:a {:href (str "https://github.com/snaekobbi/sprints/issues/" number)
+                                   :target "_blank"}] "]"]))])
+                  [:td (case state
+                         :todo "To do"
+                         :planned (str "Planned for sprint " (:sprint (first issues)))
+                         :doing "Under development"
+                         :ready-for-test "Ready for test"
+                         :on-hold "On hold"
+                         :testing "Under test"
+                         :done "Done"
+                         :cancelled "Cancelled")]])]]]])))))
 
 (defn view []
   (get-features draw))
