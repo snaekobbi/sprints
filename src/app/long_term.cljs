@@ -33,8 +33,7 @@
                                  (change-val :labels
                                              (fn [labels]
                                                (->> labels
-                                                    (map #(get % "name"))
-                                                    (filter #(re-matches #"PASS|FAIL|priority:[123]|[0-4] - .+" %))))))
+                                                    (map #(get % "name"))))))
                              issue
                              (if-let [milestone (:title (:milestone issue))]
                                (if-let [sprint (first (rest (re-matches #"sprint#([0-9]+)" milestone)))]
@@ -106,20 +105,22 @@
                              issues (sort-by #(or (:due_on (:milestone %)) sometime) (:issues feature))]
                          (assoc feature
                            :issues issues
-                           :state (if (some #(and (not (:closed %)) (:sprint %)) issues)
-                                    (if (<= (:sprint (first issues)) current-sprint)
-                                      (if (some #(or (:fail %) (:pass %)) issues)
-                                        :testing
-                                        :in-progress)
-                                      :planned)
-                                    (if (:pass (last issues))
-                                      :done
-                                      (if (some #(:sprint %) issues)
-                                        (if (or (some #(not (:sprint %)) issues)
-                                                (:fail (last issues)))
-                                          :on-hold
-                                          :ready-for-test)
-                                        :todo))))))))]
+                           :state (if (some #{"wontfix"} (flatten (map :labels issues)))
+                                    :cancelled
+                                    (if (some #(and (not (:closed %)) (:sprint %)) issues)
+                                      (if (<= (:sprint (first issues)) current-sprint)
+                                        (if (some #(or (:fail %) (:pass %)) issues)
+                                          :testing
+                                          :in-progress)
+                                        :planned)
+                                      (if (:pass (last issues))
+                                        :done
+                                        (if (some #(:sprint %) issues)
+                                          (if (or (some #(not (:sprint %)) issues)
+                                                  (:fail (last issues)))
+                                            :on-hold
+                                            :ready-for-test)
+                                          :todo)))))))))]
        (callback current-sprint features)))))
 
 (defn draw [current-sprint features]
@@ -171,7 +172,8 @@
                        :ready-for-test "Ready for testing"
                        :on-hold "On hold"
                        :testing "Under test"
-                       :done "Done")]])]])))))
+                       :done "Done"
+                       :cancelled "Cancelled")]])]])))))
 
 (defn view []
   (get-features draw))
