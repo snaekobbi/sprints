@@ -201,6 +201,15 @@
   after: [spr5_start]
   before: spr5_test_results
   assignees: [paivis]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/58
+    - https://github.com/snaekobbi/sprints/issues/60
+    - https://github.com/snaekobbi/sprints/issues/61
+    - https://github.com/snaekobbi/sprints/issues/62
+    - https://github.com/snaekobbi/sprints/issues/64
+    - https://github.com/snaekobbi/sprints/issues/65
+    - https://github.com/snaekobbi/sprints/issues/82
+    - https://github.com/snaekobbi/sprints/issues/85
 - id: spr5_test_report
   desc: "Make test report"
   after: [spr5_test_results]
