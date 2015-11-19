@@ -115,8 +115,9 @@
                                     (if (:pass (last issues))
                                       :done
                                       (if (some #(:sprint %) issues)
-                                        (if (some #(not (:sprint %)) issues)
-                                          :in-progress
+                                        (if (or (some #(not (:sprint %)) issues)
+                                                (:fail (last issues)))
+                                          :on-hold
                                           :ready-for-test)
                                         :todo))))))))]
        (callback current-sprint features)))))
@@ -139,7 +140,8 @@
              [:tr
               [:th {:colspan 2}]
               (for [sprint sprints]
-                [:th sprint])
+                [:th [:a {:href (str "https://github.com/snaekobbi/sprints/milestones/sprint%23" sprint)
+                          :target "blank_"} sprint]])
               [:th "?"]
               [:th]]]
             [:tbody
@@ -167,6 +169,7 @@
                        :planned ("Planned for sprint " (:sprint (first issues)))
                        :in-progress "Under development"
                        :ready-for-test "Ready for testing"
+                       :on-hold "On hold"
                        :testing "Under test"
                        :done "Done")]])]])))))
 
