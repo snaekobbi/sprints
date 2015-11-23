@@ -224,6 +224,7 @@
   assignees: [egli, dkager, bertfrees]
   issues:
     - https://github.com/liblouis/liblouis/issues/50
+  done: true
 
 # documentation -------------------------------------------------
 - id: spr5_website
@@ -238,6 +239,39 @@
   before: spr5_end
   assignees: []
 
+# letter spacing ------------------------------------------------
+- id: spr5_letter_spacing_css_spec
+  desc: "Enhance CSS to support letter-spacing/word-spacing"
+  after: [spr5_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+    - https://github.com/snaekobbi/braille-css-spec/issues/15
+- id: spr5_letter_spacing_document_liblouis_text_segmentation
+  desc: "Properly document code in liblouis-core that deals with text segmentation"
+  after: [spr5_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr5_letter_spacing_liblouis_java_api
+  desc: "Possibly enhance Liblouis Java API for more advanced support for text segmentation"
+  after: [spr5_start]
+  assignees: [bertfrees, jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr5_translator_api
+  desc: "Enhance translator API to support translation while formatting"
+  after: [spr5_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+- id: spr5_letter_spacing_pretranslation
+  desc: "Decide whether letter spacing needs to be supported in combination with hyphenation/pre-translation, and find out how"
+  after: [spr5_start]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
+
 # ---------------------------------------------------------------
 # ------------ SPRINT 6 -----------------------------------------
 # ---------------------------------------------------------------
@@ -246,44 +280,14 @@
   time: 2015-12-25
   
 # letter spacing ------------------------------------------------
-- id: spr6_letter_spacing_css_spec
-  desc: "Enhance CSS to support letter-spacing/word-spacing"
-  after: [spr5_end]
-  assignees: [bertfrees]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
-    - https://github.com/snaekobbi/braille-css-spec/issues/15
-- id: spr6_letter_spacing_document_liblouis_text_segmentation
-  desc: "Properly document code in liblouis-core that deals with text segmentation"
-  after: [spr5_end]
-  assignees: [bertfrees]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
-- id: spr6_letter_spacing_liblouis_java_api
-  desc: "Possibly enhance Liblouis Java API for more advanced support for text segmentation"
-  after: [spr5_end]
-  assignees: [bertfrees]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
-- id: spr6_translator_api
-  desc: "Enhance translator API to support translation while formatting"
-  after: [spr5_end]
-  assignees: [bertfrees]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
-- id: spr6_letter_spacing_pretranslation
-  desc: "Decide whether letter spacing needs to be supported in combination with hyphenation/pre-translation, and find out how"
-  after: [spr5_end]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
 - id: spr6_letter_spacing_impl
   desc: "Implement letter-spacing/word-spacing"
   after:
-    - spr6_letter_spacing_css_spec
-    - spr6_letter_spacing_document_liblouis_text_segmentation
-    - spr6_letter_spacing_liblouis_java_api
-    - spr6_translator_api
-    - spr6_letter_spacing_pretranslation
+    - spr5_letter_spacing_css_spec
+    - spr5_letter_spacing_document_liblouis_text_segmentation
+    - spr5_letter_spacing_liblouis_java_api
+    - spr5_translator_api
+    - spr5_letter_spacing_pretranslation
   before: spr6_end
   issues:
    - https://github.com/snaekobbi/sprints/issues/15
