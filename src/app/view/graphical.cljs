@@ -182,73 +182,93 @@
                      acc)
                (rest tasks))
               acc))]
-      (doall
-       (for [task tasks]
-         (set! (.-onclick (.-node (:rect task)))
-               (fn []
-                 (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
-                 (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
-                 (.attr (:rect task) (clj->js {:fill (bg-color-selected task)}))
-                 (let [html (str "<h2>" (:desc task) "</h2>")
-                       html (if-let [issues (not-empty (:issues task))]
-                              (str html
-                                   "More info:<ul>"
-                                   (join "\n"
-                                         (for [issue issues]
-                                           (let [[_ _ _ owner repo _ number] (split issue #"/")]
-                                             (str "<li><a class='ghi' href='" issue "' target='_blank' "
-                                                  "owner='" owner "' repo='" repo "' number='" number "'>"
-                                                  issue
-                                                  "</a></li>"))))
-                                   "</ul>")
-                              html)]
-                   (let [div3 ($ div3)]
-                     (.html div3 html)
-                     (.each (.find div3 "a.ghi")
-                       (fn [] (this-as this
-                         (let [this ($ this)
-                               owner (.attr this "owner")
-                               repo (.attr this "repo")
-                               number (.attr this "number")]
-                           (gh/issue owner repo number
-                                     #(do (.text this (str "[" owner "/" repo "] " (:title %)))
-                                          (when-let [assignee (:assignee %)]
-                                            (.after this (str " (" assignee ")")))))))))))
-                 (.animateViewBox paper1
-                                  (+ (:x task) (/ (- (:width task) div-width) 2))
-                                  0
-                                  width
-                                  div1-height
-                                  700
-                                  "<>")
-                 (.animateViewBox paper2
-                                  (+ (:x task) (/ (- (:width task) div-width) 2))
-                                  (+ (:y task) (/ (- (:height task) div2-height) 2))
-                                  width
-                                  height
-                                  700
-                                  "<>")
-                 (doall
-                  (map #(if (is-milestone? %)
-                          (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
-                          (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
-                       (concat (map #(get-task % (concat tasks milestones)) (:after task))
-                               (filter #(some #{(:id task)} (:after %)) tasks)
-                               (map #(get-task % milestones) (remove nil? [(:before task)])))))))))
-      (doall
-       (for [milestone milestones]
-         (set! (.-onclick (.-node (:path milestone)))
-               (fn []
-                 (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
-                 (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
-                 (.attr (:path milestone) (clj->js {:fill (bg-color-selected milestone)}))
-                 (set! (.-innerHTML div3) (str "<h2>" (:desc milestone) "</h2>"
-                                               "Due date: " (:time milestone)))
-                 (doall
-                  (map #(if (is-milestone? %)
-                          (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
-                          (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
-                       (concat (filter #(or (some #{(:id milestone)} (:after %))
-                                            (= (:id milestone) (:before %)))
-                                       tasks))))))))
-      nil))))
+      (letfn [(select-task [task]
+                (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
+                (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
+                (.attr (:rect task) (clj->js {:fill (bg-color-selected task)}))
+                (let [html (str "<h2>" (:desc task) "</h2>")
+                      html (if-let [issues (not-empty (:issues task))]
+                             (str html
+                                  "More info:<ul>"
+                                  (join "\n"
+                                        (for [issue issues]
+                                          (let [[_ _ _ owner repo _ number] (split issue #"/")]
+                                            (str "<li><a class='ghi' href='" issue "' target='_blank' "
+                                                 "owner='" owner "' repo='" repo "' number='" number "'>"
+                                                 issue
+                                                 "</a></li>"))))
+                                  "</ul>")
+                             html)]
+                  (let [div3 ($ div3)]
+                    (.html div3 html)
+                    (.each (.find div3 "a.ghi")
+                           (fn [] (this-as this
+                                           (let [this ($ this)
+                                                 owner (.attr this "owner")
+                                                 repo (.attr this "repo")
+                                                 number (.attr this "number")]
+                                             (gh/issue owner repo number
+                                                       #(do (.text this (str "[" owner "/" repo "] " (:title %)))
+                                                            (when-let [assignee (:assignee %)]
+                                                              (.after this (str " (" assignee ")")))))))))))
+                (.animateViewBox paper1
+                                 (+ (:x task) (/ (- (:width task) div-width) 2))
+                                 0
+                                 width
+                                 div1-height
+                                 700
+                                 "<>")
+                (.animateViewBox paper2
+                                 (+ (:x task) (/ (- (:width task) div-width) 2))
+                                 (+ (:y task) (/ (- (:height task) div2-height) 2))
+                                 width
+                                 height
+                                 700
+                                 "<>")
+                (doall
+                 (map #(if (is-milestone? %)
+                         (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
+                         (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
+                      (concat (map #(get-task % (concat tasks milestones)) (:after task))
+                              (filter #(some #{(:id task)} (:after %)) tasks)
+                              (map #(get-task % milestones) (remove nil? [(:before task)]))))))
+              (select-milestone [milestone]
+                (doall (map #(.attr (:rect %) (clj->js {:fill (bg-color %)})) tasks))
+                (doall (map #(.attr (:path %) (clj->js {:fill (bg-color %)})) milestones))
+                (.attr (:path milestone) (clj->js {:fill (bg-color-selected milestone)}))
+                (set! (.-innerHTML div3) (str "<h2>" (:desc milestone) "</h2>"
+                                              "Due date: " (:time milestone)))
+                (doall
+                 (map #(if (is-milestone? %)
+                         (.attr (:path %) (clj->js {:fill (bg-color-selected %)}))
+                         (.attr (:rect %) (clj->js {:fill (bg-color-selected %)})))
+                      (concat (filter #(or (some #{(:id milestone)} (:after %))
+                                           (= (:id milestone) (:before %)))
+                                      tasks)))))]
+        (doall
+         (for [task tasks]
+           (set! (.-onclick (.-node (:rect task)))
+                 ;; #(select-task task)
+                 #(set! (.-hash (.-location js/window)) (str "#" (:id task)))
+                 )))
+        (doall
+         (for [milestone milestones]
+           (set! (.-onclick (.-node (:path milestone)))
+                 ;; #(select-milestone milestone)
+                 #(set! (.-hash (.-location js/window)) (str "#" (:id milestone)))
+                 )))
+        (letfn [(select-task-or-milestone [id]
+                  (when-let [task-or-milestone (get-task id (concat tasks milestones))]
+                    (if (is-milestone? task-or-milestone)
+                      (select-milestone task-or-milestone)
+                      (select-task task-or-milestone))))]
+          ;; (if (.hasOwnProperty js/window "onhashchange")
+          ;;   (set! (.-onhashchange (.-node (:path milestone))) #(...))
+          (let [hash (atom "")]
+            (.setInterval js/window
+                          #(when-let [[_ new-hash] (re-matches #"#(.+)" (.-hash (.-location js/window)))]
+                             (when (not (= new-hash @hash))
+                               (reset! hash new-hash)
+                               (select-task-or-milestone new-hash)))
+                          100)))
+        nil)))))
