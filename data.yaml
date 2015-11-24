@@ -241,12 +241,13 @@
 
 # letter spacing ------------------------------------------------
 - id: spr5_letter_spacing_css_spec
-  desc: "Enhance CSS to support letter-spacing/word-spacing"
+  desc: "Enhance CSS to support word-spacing and letter-spacing"
   after: [spr5_start]
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
     - https://github.com/snaekobbi/braille-css-spec/issues/15
+  done: true
 - id: spr5_letter_spacing_document_liblouis_text_segmentation
   desc: "Properly document code in liblouis-core that deals with text segmentation"
   after: [spr5_start]
@@ -271,6 +272,15 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
+  done: true
+- id: spr5_letter_spacing_low_level
+  desc: "Low-level implementation of word-spacing and letter-spacing"
+  after:
+    - spr5_letter_spacing_css_spec
+    - spr5_letter_spacing_liblouis_java_api
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/15
 
 # ---------------------------------------------------------------
 # ------------ SPRINT 6 -----------------------------------------
@@ -278,14 +288,13 @@
 - id: spr6_end
   desc: "End of sprint #6"
   time: 2015-12-25
-  
+
 # letter spacing ------------------------------------------------
 - id: spr6_letter_spacing_impl
   desc: "Implement letter-spacing/word-spacing"
   after:
-    - spr5_letter_spacing_css_spec
+    - spr5_letter_spacing_low_level
     - spr5_letter_spacing_document_liblouis_text_segmentation
-    - spr5_letter_spacing_liblouis_java_api
     - spr5_translator_api
     - spr5_letter_spacing_pretranslation
   before: spr6_end
