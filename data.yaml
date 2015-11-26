@@ -185,6 +185,7 @@
     - stesk
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
+  done: true
 - id: spr5_system_tests_print_page_range
   desc: "Perform system tests for print page ranges"
   after:
@@ -196,6 +197,7 @@
     - stesk
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
+  done: true
 - id: spr5_system_tests_celia
   desc: "Do system test from sprint #4"
   after: [spr5_start]
@@ -237,7 +239,7 @@
   desc: "Wiki page with comparison of required script options"
   after: [spr5_start]
   before: spr5_end
-  assignees: []
+  assignees: [bertfrees, stesk]
 
 # letter spacing ------------------------------------------------
 - id: spr5_letter_spacing_css_spec
