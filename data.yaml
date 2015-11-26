@@ -185,7 +185,7 @@
     - stesk
   issues:
     - https://github.com/snaekobbi/sprints/issues/137
-- id: spr5_system_tests_page_break_control
+- id: spr5_system_tests_print_page_range
   desc: "Perform system tests for print page ranges"
   after:
     - spr5_release_v1_4_0
