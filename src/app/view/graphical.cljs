@@ -100,8 +100,8 @@
         div-width (.-offsetWidth div1)
         div1-height (.-offsetHeight div1)
         div2-height (.-offsetHeight div2)
-        time-scale 2700000
-        box-height 30
+        time-scale 3800000
+        box-height 20
         height (* (count tasks) box-height)
         width (/ (- (apply max (map :end tasks)) (apply min (map :begin tasks))) time-scale)
         height (max height div2-height)

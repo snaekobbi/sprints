@@ -1,0 +1,25 @@
+#top,
+#middle,
+#bottom {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+}
+#top {
+  padding: 0;
+  height: 50px;
+  overflow: hidden;
+}
+#middle {
+  border: 1px solid black;
+  padding: 0;
+  top: 63px;
+  bottom: 215px;
+  overflow: hidden;
+}
+#bottom {
+  padding: 0;
+  bottom: 10px;
+  height: 200px;
+  overflow: scroll;
+}
