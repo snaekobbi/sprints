@@ -75,7 +75,7 @@
     - https://github.com/snaekobbi/sprints/issues/137
   done: true
   
-# volume splitting ----------------------------------------------
+# volume breaking -----------------------------------------------
 - id: spr5_volume_breaking_css_spec
   desc: "Possibly enhance CSS spec to support content in volume frontmatter/backmatter"
   after: [spr5_start]
@@ -127,16 +127,6 @@
   issues:
     - https://github.com/snaekobbi/pipeline-mod-mtm/issues/4
     - https://github.com/daisy/pipeline-framework/issues/84
-- id: spr5_dtbook_validation
-  desc: "DTBook validation"
-  after: [spr5_start]
-  issues:
-    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
-- id: spr5_pef_validation
-  desc: "PEF validation"
-  after: [spr5_start]
-  issues:
-    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
 
 # release -------------------------------------------------------
 - id: spr5_webui_release_templates
@@ -217,6 +207,7 @@
   after: [spr5_test_results]
   before: spr5_end
   assignees: [denisviro]
+  done: true
 
 # liblouis ------------------------------------------------------
 - id: spr5_liblouis_merge_preparation_call
@@ -235,12 +226,14 @@
   before: spr5_end
 
 # other
-- id: spr5_wiki_options
+- id: spr5_wiki_configuration
   desc: "Wiki page with comparison of required script options"
   after: [spr5_start]
   before: spr5_end
   assignees: [bertfrees, stesk]
-
+  issues:
+    - https://github.com/snaekobbi/issues/issues/22
+  
 # letter spacing ------------------------------------------------
 - id: spr5_letter_spacing_css_spec
   desc: "Enhance CSS to support word-spacing and letter-spacing"
@@ -262,12 +255,6 @@
   assignees: [bertfrees, jukkae]
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
-- id: spr5_translator_api
-  desc: "Enhance translator API to support translation while formatting"
-  after: [spr5_start]
-  assignees: [bertfrees]
-  issues:
-    - https://github.com/snaekobbi/sprints/issues/15
 - id: spr5_letter_spacing_pretranslation
   desc: "Decide whether letter spacing needs to be supported in combination with hyphenation/pre-translation, and find out how"
   after: [spr5_start]
@@ -287,30 +274,195 @@
 # ---------------------------------------------------------------
 # ------------ SPRINT 6 -----------------------------------------
 # ---------------------------------------------------------------
+- id: spr6_start
+  desc: "Start of sprint #5"
+  time: 2015-12-03
+- id: spr6_release_v1_5_0
+  desc: "Software update v1.5.0"
+  time: 2015-12-16
+- id: spr6_test_results
+  desc: "All test results must be submitted"
+  time: 2015-12-19
 - id: spr6_end
   desc: "End of sprint #6"
   time: 2015-12-25
 
+# page breaking -------------------------------------------------
+- id: spr6_dotify_fix_page_breaking
+  desc: "Fix some issues in Dotify related to page breaking"
+  after: [spr6_start]
+  assignees: [joeha480]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/154
+    - https://github.com/joeha480/dotify/issues/146
+    - https://github.com/joeha480/dotify/issues/147
+- id: spr6_dotify_fix_marker_scope
+  desc: "Fix some issues in Dotify related to print page indication"
+  after: [spr6_start]
+  assignees: [joeha480]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/141
+    - https://github.com/joeha480/dotify/issues/143
+    - https://github.com/joeha480/dotify/issues/144
+- id: spr6_fix_print_page_indication
+  desc: "Fix some issues in Pipeline related to print page indication"
+  after: [spr6_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/141
+    - https://github.com/daisy/pipeline-mod-braille/issues/64
+    - https://github.com/daisy/pipeline-mod-braille/issues/65
+    
+# print page breaks ---------------------------------------------
+- id: spr6_dotify_print_page_marks
+  desc: "Implement support for print page break marks in the left margin in Dotify"
+  assignees: [joeha480]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/142
+    - https://github.com/joeha480/dotify/issues/145
+- id: spr6_css_print_page_marks
+  desc: "Support print page break marks in the left margin in braille CSS"
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/142
+- id: spr6_print_page_marks
+  desc: "Implement support for print page break marks in the left margin in DP2"
+  assignees: []
+  after:
+    - spr6_css_print_page_marks
+    - spr6_dotify_print_page_marks
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/142
+    
+# volumes -------------------------------------------------------
+- id: spr6_volume_breaking_impl_dp2
+  desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
+  after: [spr5_volume_breaking_css_spec]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/149
+    - https://github.com/snaekobbi/sprints/issues/151
+    - https://github.com/snaekobbi/sprints/issues/152
+    - https://github.com/snaekobbi/sprints/issues/153
+
 # letter spacing ------------------------------------------------
+- id: spr6_translator_api
+  desc: "Enhance translator API to support translation while formatting"
+  after: [spr6_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/155
 - id: spr6_letter_spacing_impl
   desc: "Implement letter-spacing/word-spacing"
   after:
     - spr5_letter_spacing_low_level
     - spr5_letter_spacing_document_liblouis_text_segmentation
-    - spr5_translator_api
     - spr5_letter_spacing_pretranslation
-  before: spr6_end
+    - spr6_translator_api
   issues:
-   - https://github.com/snaekobbi/sprints/issues/15
+   - https://github.com/snaekobbi/sprints/issues/155
    - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
 
-# liblouis
+# liblouis ------------------------------------------------------
 - id: spr6_liblouis_merge
   desc: "Integrate work on capitals/emphasis/numbers incl. regression testing"
   after:
-    - spr5_end
+    - spr6_start
     - spr5_liblouis_merge_preparation_call
   before: spr6_end
   assignees: [egli, dkager]
   issues:
+    - https://github.com/snaekobbi/sprints/issues/18
     - https://github.com/liblouis/liblouis/issues/50
+
+# number formatting ---------------------------------------------
+- id: spr6_number_formatting
+  desc: "Improve support for number formatting"
+  after: [spr6_start]
+  before: spr6_end
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/147
+
+# generated content ---------------------------------------------
+- id: spr6_nlb_generated_content
+  desc: "Work towards a production ready system for NLB by generating the necessary boilerplate text, transcriber notes, table of contents, metadata, etc."
+  after: [spr6_start]
+  before: spr6_end
+  assignees: []
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/75
+
+# integration of SBS translator ---------------------------------
+- id: spr6_integrate_sbs_translator
+  desc: "Finish integrating SBS translator"
+  after: [spr6_start]
+  before: spr6_end
+  assignees: [egli]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-sbs/issues/2
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/37
+
+# other ---------------------------------------------------------
+- id: spr6_wiki_configuration
+  desc: "Finish wiki page with comparison of required script options"
+  after: [spr6_start]
+  before: spr6_end
+  assignees: [bertfrees, stesk]
+  issues:
+    - https://github.com/snaekobbi/issues/issues/22
+
+# gui -----------------------------------------------------------
+- id: spr6_gui_options
+  desc: "Option validation in GUI, incl. support for enum/regex datatypes, and default options"
+  after: [spr6_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/4
+    - https://github.com/daisy/pipeline-framework/issues/84
+
+# mtm production ready system -----------------------------------
+- id: spr6_dtbook_validation
+  desc: "DTBook validation"
+  after: [spr6_start]
+  before: spr6_end
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
+- id: spr6_pef_validation
+  desc: "PEF validation"
+  after: [spr6_start]
+  before: spr6_end
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
+
+# release -------------------------------------------------------
+- id: spr6_webui_release
+  desc: "Release a new version of the web UI"
+  after:
+    - spr6_gui_options
+  before: spr6_release_v1_5_0
+  assignees: [josteinaj]
+- id: spr6_integration_v1_5_0
+  desc: "Integration, smoke test and release of v1.5.0"
+  after:
+    - spr6_dotify_fix_page_breaking
+    - spr6_dotify_fix_print_page_indication
+    - spr6_fix_print_page_indication
+    - spr6_volume_breaking_impl_dp2
+    - spr6_webui_release
+    - spr6_letter_spacing_impl
+  before: spr6_release_v1_5_0
+  assignees: [bertfrees]
+
+# system tests --------------------------------------------------
+- id: spr6_system_test_print_page_marks
+  desc: "Perform system tests for print page break marks in the left margin"
+  assignees: [KariRudjord]
+  after:
+    - spr6_print_page_marks
+  before: spr6_test_results
+- id: spr6_test_report
+  desc: "Make test report"
+  after: [spr6_test_results]
+  before: spr6_end
+  assignees: [denisviro]
