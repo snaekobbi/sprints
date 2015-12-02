@@ -451,6 +451,7 @@
     - spr6_number_formatting
     - spr6_webui_release
     - spr6_letter_spacing_impl
+    - spr6_print_page_marks
   before: spr6_release_v1_5_0
   assignees: [bertfrees]
 
@@ -459,7 +460,7 @@
   desc: "Perform system tests for print page break marks in the left margin"
   assignees: [KariRudjord]
   after:
-    - spr6_print_page_marks
+    - spr6_integration_v1_5_0
   before: spr6_test_results
 - id: spr6_test_report
   desc: "Make test report"
