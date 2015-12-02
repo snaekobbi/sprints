@@ -148,12 +148,6 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/140
   done: true
-- id: spr5_webui_release_options
-  desc: "Release a new version of the web UI incl. option validation and default options"
-  after:
-    - spr5_gui_options
-  before: spr5_release_v1_4_1
-  assignees: [josteinaj]
 - id: spr5_integration_v1_4_1
   desc: "Integration and release of v1.4.1"
   after:
