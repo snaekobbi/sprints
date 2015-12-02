@@ -143,7 +143,6 @@
     - spr5_page_break_control_impl_dp2
     - spr5_volume_breaking_impl_dp2
     - spr5_integrate_sbs_translator
-    - spr5_letter_spacing_impl
   before: spr5_release_v1_4_0
   assignees: [bertfrees]
   issues:
@@ -296,7 +295,7 @@
     - https://github.com/snaekobbi/sprints/issues/154
     - https://github.com/joeha480/dotify/issues/146
     - https://github.com/joeha480/dotify/issues/147
-- id: spr6_dotify_fix_marker_scope
+- id: spr6_dotify_fix_print_page_indication
   desc: "Fix some issues in Dotify related to print page indication"
   after: [spr6_start]
   assignees: [joeha480]
@@ -337,7 +336,7 @@
 # volumes -------------------------------------------------------
 - id: spr6_volume_breaking_impl_dp2
   desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
-  after: [spr5_volume_breaking_css_spec]
+  after: [spr5_volume_breaking_css_spec, spr6_start]
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/149
@@ -359,6 +358,7 @@
     - spr5_letter_spacing_document_liblouis_text_segmentation
     - spr5_letter_spacing_pretranslation
     - spr6_translator_api
+  assignees: [jukkae]
   issues:
    - https://github.com/snaekobbi/sprints/issues/155
    - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
@@ -379,7 +379,6 @@
 - id: spr6_number_formatting
   desc: "Improve support for number formatting"
   after: [spr6_start]
-  before: spr6_end
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/147
@@ -389,7 +388,7 @@
   desc: "Work towards a production ready system for NLB by generating the necessary boilerplate text, transcriber notes, table of contents, metadata, etc."
   after: [spr6_start]
   before: spr6_end
-  assignees: []
+  assignees: [usama49]
   issues:
     - https://github.com/snaekobbi/sprints/issues/75
 
@@ -449,6 +448,7 @@
     - spr6_dotify_fix_print_page_indication
     - spr6_fix_print_page_indication
     - spr6_volume_breaking_impl_dp2
+    - spr6_number_formatting
     - spr6_webui_release
     - spr6_letter_spacing_impl
   before: spr6_release_v1_5_0
