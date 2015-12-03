@@ -310,11 +310,13 @@
 - id: spr6_dotify_print_page_marks
   desc: "Implement support for print page break marks in the left margin in Dotify"
   assignees: [joeha480]
+  after: [spr6_start]
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
     - https://github.com/joeha480/dotify/issues/145
 - id: spr6_css_print_page_marks
   desc: "Support print page break marks in the left margin in braille CSS"
+  after: [spr6_start]
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
@@ -450,12 +452,22 @@
   assignees: [bertfrees]
 
 # system tests --------------------------------------------------
+- id: spr6_system_test_letter_spacing
+  desc: "Perform system tests for letter spacing and word spacing"
+  assignees: [paivis]
+  after:
+    - spr6_integration_v1_5_0
+  before: spr6_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/155
 - id: spr6_system_test_print_page_marks
   desc: "Perform system tests for print page break marks in the left margin"
   assignees: [KariRudjord]
   after:
     - spr6_integration_v1_5_0
   before: spr6_test_results
+  issues:
+    -
 - id: spr6_test_report
   desc: "Make test report"
   after: [spr6_test_results]
