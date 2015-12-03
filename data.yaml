@@ -455,19 +455,34 @@
 - id: spr6_system_test_letter_spacing
   desc: "Perform system tests for letter spacing and word spacing"
   assignees: [paivis]
-  after:
-    - spr6_integration_v1_5_0
+  after: [spr6_release_v1_5_0]
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/155
 - id: spr6_system_test_print_page_marks
   desc: "Perform system tests for print page break marks in the left margin"
   assignees: [KariRudjord]
-  after:
-    - spr6_integration_v1_5_0
+  after: [spr6_release_v1_5_0]
   before: spr6_test_results
   issues:
-    -
+    - https://github.com/snaekobbi/sprints/issues/142
+- id: spr6_system_test_page_breaking
+  desc: "Perform system tests for page break control"
+  assignees: [mixa72]
+  after: [spr6_release_v1_5_0]
+  before: spr6_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/154
+- id: spr6_system_test_print_page_range
+  desc: "Perform system tests for print page ranges"
+  assignees:
+    - mixa72
+    - stesk
+    - dkager
+  after: [spr6_release_v1_5_0]
+  before: spr6_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/141
 - id: spr6_test_report
   desc: "Make test report"
   after: [spr6_test_results]
