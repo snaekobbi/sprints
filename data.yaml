@@ -467,14 +467,14 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
 - id: spr6_system_test_page_breaking
-  desc: "Perform system tests for page break control"
+  desc: "Repeat system tests for page break control"
   assignees: [mixa72]
   after: [spr6_release_v1_5_0]
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/154
 - id: spr6_system_test_print_page_range
-  desc: "Perform system tests for print page ranges"
+  desc: "Repeat system tests for print page ranges"
   assignees:
     - mixa72
     - stesk
