@@ -24,7 +24,7 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/138
-    - snaekobbi/braille-css-spec/issues/17
+    - https://github.com/snaekobbi/braille-css-spec/issues/17
   done: true
 - id: spr5_print_page_range_css_examples
   desc: "Examples of print page ranges in CSS spec"
@@ -263,6 +263,7 @@
   assignees: [jukkae]
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
+  done: true
 
 # ---------------------------------------------------------------
 # ------------ SPRINT 6 -----------------------------------------
@@ -289,6 +290,7 @@
     - https://github.com/snaekobbi/sprints/issues/154
     - https://github.com/joeha480/dotify/issues/146
     - https://github.com/joeha480/dotify/issues/147
+  done: true
 - id: spr6_dotify_fix_print_page_indication
   desc: "Fix some issues in Dotify related to print page indication"
   after: [spr6_start]
@@ -305,7 +307,8 @@
     - https://github.com/snaekobbi/sprints/issues/141
     - https://github.com/daisy/pipeline-mod-braille/issues/64
     - https://github.com/daisy/pipeline-mod-braille/issues/65
-    
+  done: true
+
 # print page breaks ---------------------------------------------
 - id: spr6_dotify_print_page_marks
   desc: "Implement support for print page break marks in the left margin in Dotify"
@@ -314,6 +317,7 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
     - https://github.com/joeha480/dotify/issues/145
+  done: true
 - id: spr6_css_print_page_marks
   desc: "Support print page break marks in the left margin in braille CSS"
   after: [spr6_start]
