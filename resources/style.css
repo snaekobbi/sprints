@@ -1,3 +1,5 @@
+@namespace svg "http://www.w3.org/2000/svg";
+
 #top,
 #middle,
 #bottom {
@@ -7,13 +9,12 @@
 }
 #top {
   padding: 0;
-  height: 50px;
+  height: 70px;
   overflow: hidden;
 }
 #middle {
-  border: 1px solid black;
   padding: 0;
-  top: 63px;
+  top: 81px;
   bottom: 215px;
   overflow: hidden;
 }
@@ -22,4 +23,13 @@
   bottom: 10px;
   height: 200px;
   overflow: scroll;
+  font-size: 14px;
+}
+svg|text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
