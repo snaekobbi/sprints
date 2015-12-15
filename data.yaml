@@ -335,7 +335,8 @@
     - spr6_dotify_print_page_marks
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
-    
+  done: true
+
 # volumes -------------------------------------------------------
 - id: spr6_volume_breaking_impl_dp2
   desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
@@ -354,6 +355,7 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/155
+  done: true
 - id: spr6_letter_spacing_impl
   desc: "Implement letter-spacing/word-spacing"
   after:
@@ -365,7 +367,8 @@
   issues:
    - https://github.com/snaekobbi/sprints/issues/155
    - https://github.com/snaekobbi/pipeline-mod-braille/issues/24
-
+  done: true
+  
 # liblouis ------------------------------------------------------
 - id: spr6_liblouis_merge
   desc: "Integrate work on capitals/emphasis/numbers incl. regression testing"
