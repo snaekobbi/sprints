@@ -444,6 +444,7 @@
     - spr6_gui_options
   before: spr6_release_v1_5_0
   assignees: [josteinaj]
+  cancelled: true
 - id: spr6_integration_v1_5_0
   desc: "Integration, smoke test and release of v1.5.0"
   after:
