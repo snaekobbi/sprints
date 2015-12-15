@@ -195,6 +195,7 @@
     - https://github.com/snaekobbi/sprints/issues/65
     - https://github.com/snaekobbi/sprints/issues/82
     - https://github.com/snaekobbi/sprints/issues/85
+  cancelled: true
 - id: spr5_test_report
   desc: "Make test report"
   after: [spr5_test_results]
@@ -226,7 +227,8 @@
   assignees: [bertfrees, stesk]
   issues:
     - https://github.com/snaekobbi/issues/issues/22
-  
+  done: true
+
 # letter spacing ------------------------------------------------
 - id: spr5_letter_spacing_css_spec
   desc: "Enhance CSS to support word-spacing and letter-spacing"
@@ -248,6 +250,7 @@
   assignees: [bertfrees, jukkae]
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
+  cancelled: true
 - id: spr5_letter_spacing_pretranslation
   desc: "Decide whether letter spacing needs to be supported in combination with hyphenation/pre-translation, and find out how"
   after: [spr5_start]
@@ -487,6 +490,7 @@
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/141
+  cancelled: true
 - id: spr6_test_report
   desc: "Make test report"
   after: [spr6_test_results]
