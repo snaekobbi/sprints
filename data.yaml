@@ -489,6 +489,7 @@
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/154
+  done: true
 - id: spr6_system_test_print_page_range
   desc: "Repeat system tests for print page ranges"
   assignees:
