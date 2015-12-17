@@ -463,7 +463,7 @@
     - spr6_print_page_marks
   before: spr6_release_v1_5_0
   assignees: [bertfrees]
-  issue:
+  issues:
     - https://github.com/snaekobbi/sprints/issues/156
   done: true
 
