@@ -244,6 +244,7 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/15
+  cancelled: true
 - id: spr5_letter_spacing_liblouis_java_api
   desc: "Possibly enhance Liblouis Java API for more advanced support for text segmentation"
   after: [spr5_start]
@@ -272,7 +273,7 @@
 # ------------ SPRINT 6 -----------------------------------------
 # ---------------------------------------------------------------
 - id: spr6_start
-  desc: "Start of sprint #5"
+  desc: "Start of sprint #6"
   time: 2015-12-03
 - id: spr6_release_v1_5_0
   desc: "Software update v1.5.0"
@@ -327,6 +328,7 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
+  done: true
 - id: spr6_print_page_marks
   desc: "Implement support for print page break marks in the left margin in DP2"
   assignees: []
@@ -461,6 +463,9 @@
     - spr6_print_page_marks
   before: spr6_release_v1_5_0
   assignees: [bertfrees]
+  issue:
+    - https://github.com/snaekobbi/sprints/issues/156
+  done: true
 
 # system tests --------------------------------------------------
 - id: spr6_system_test_letter_spacing
