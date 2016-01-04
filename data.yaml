@@ -482,6 +482,7 @@
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/142
+  done: true
 - id: spr6_system_test_page_breaking
   desc: "Repeat system tests for page break control"
   assignees: [mixa72]
