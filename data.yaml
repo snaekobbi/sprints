@@ -576,6 +576,7 @@
 # non-standard hyphenation --------------------------------------
 - id: spr7_nonstandard_hyphenation
   desc: "Implement non-standard hyphenation"
+  after: [spr7_start]
   assignees: [jukkae]
   issues:
     - https://github.com/snaekobbi/sprints/issues/22
@@ -608,6 +609,7 @@
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/61
 - id: spr7_gui_documentation
   desc: "Improve documentation possibilities of scripts and templates in GUI"
+  after: [spr7_start]
   assignees: [josteinaj]
   issues:
     - https://github.com/daisy/pipeline-webui/issues/47
