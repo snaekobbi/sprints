@@ -553,7 +553,6 @@
 - id: spr7_volume_breaking_impl_dp2
   desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
   after:
-    - spr6_volume_breaking_impl_dp2
     - spr7_start
   assignees: [bertfrees]
   issues:
@@ -566,7 +565,6 @@
 - id: spr7_liblouis_merge
   desc: "Implement, test and document new design for capitals and emphasis"
   after:
-    - spr6_liblouis_merge
     - spr7_start
   before: spr7_end
   assignees: [egli, dkager, bertfrees]
@@ -620,7 +618,6 @@
 - id: spr7_nlb_generated_content
   desc: "Continue working towards a production ready system for NLB"
   after:
-    - spr6_nlb_generated_content
     - spr7_start
   before: spr7_end
   assignees: [usama49]
@@ -667,7 +664,7 @@
     - stesk
     - BWestling
     - JC-MTM
-  after: [spr7_release_v1_5_0]
+  after: [spr7_release_v1_6_0]
   before: spr7_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/36
@@ -676,7 +673,7 @@
     - https://github.com/snaekobbi/sprints/issues/46
 - id: spr7_system_test_volume_breaking
   desc: "Perform system tests for basic volume breaking incl. repeating title page and splitting/repeating table of contents."
-  after: [spr7_release_v1_5_0]
+  after: [spr7_release_v1_6_0]
   before: spr7_test_results
   assignees:
     - KariRudjord
