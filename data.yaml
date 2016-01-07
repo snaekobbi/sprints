@@ -339,7 +339,7 @@
     - https://github.com/snaekobbi/sprints/issues/142
   done: true
 
-# volumes -------------------------------------------------------
+# volume breaking -----------------------------------------------
 - id: spr6_volume_breaking_impl_dp2
   desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
   after: [spr5_volume_breaking_css_spec, spr6_start]
@@ -400,7 +400,7 @@
   issues:
     - https://github.com/snaekobbi/sprints/issues/75
 
-# integration of SBS translator ---------------------------------
+# integration of sbs translator ---------------------------------
 - id: spr6_integrate_sbs_translator
   desc: "Finish integrating SBS translator"
   after: [spr6_start]
@@ -475,6 +475,7 @@
   before: spr6_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/155
+  done: true
 - id: spr6_system_test_print_page_marks
   desc: "Perform system tests for print page break marks in the left margin"
   assignees: [KariRudjord]
@@ -506,4 +507,192 @@
   desc: "Make test report"
   after: [spr6_test_results]
   before: spr6_end
+  assignees: [denisviro]
+
+# ---------------------------------------------------------------
+# ------------ SPRINT 7 -----------------------------------------
+# ---------------------------------------------------------------
+- id: spr7_start
+  desc: "Start of sprint #7"
+  time: 2016-01-07
+- id: spr7_release_v1_6_0
+  desc: "Software update v1.6.0"
+  time: 2016-01-20
+- id: spr7_test_results
+  desc: "All test results must be submitted"
+  time: 2016-01-26
+- id: spr7_end
+  desc: "End of sprint #7"
+  time: 2016-01-29
+
+# tables --------------------------------------------------------
+- id: spr7_tables_spec
+  desc: "Support for tables in OBFL and CSS and possibly come up with additional ways of configuring table handling if needed."
+  after: [spr7_start]
+  before: spr7_release_v1_6_0
+  assignees: [joeha480, bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/36
+    - https://github.com/snaekobbi/sprints/issues/38
+    - https://github.com/snaekobbi/sprints/issues/39
+    - https://github.com/snaekobbi/sprints/issues/46
+    - https://github.com/snaekobbi/braille-css-spec/issues/4
+- id: spr7_tables_impl
+  desc: "Implement basic support for tables"
+  after: [spr7_start]
+  assignees: [joeha480, bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/36
+    - https://github.com/snaekobbi/sprints/issues/38
+    - https://github.com/snaekobbi/sprints/issues/39
+    - https://github.com/snaekobbi/sprints/issues/46
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/14
+    - https://github.com/joeha480/dotify/issues/63
+
+# volume breaking -----------------------------------------------
+- id: spr7_volume_breaking_impl_dp2
+  desc: "Finish support for basic volume splitting in CSS parser and CSS-to-OBFL"
+  after:
+    - spr6_volume_breaking_impl_dp2
+    - spr7_start
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/150
+    - https://github.com/snaekobbi/sprints/issues/159
+    - https://github.com/snaekobbi/sprints/issues/158
+    - https://github.com/snaekobbi/sprints/issues/157
+    
+# liblouis ------------------------------------------------------
+- id: spr7_liblouis_merge
+  desc: "Implement, test and document new design for capitals and emphasis"
+  after:
+    - spr6_liblouis_merge
+    - spr7_start
+  before: spr7_end
+  assignees: [egli, dkager, bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/162
+    - https://github.com/liblouis/liblouis/issues/50
+    - https://github.com/liblouis/liblouis/issues/99
+
+# non-standard hyphenation --------------------------------------
+- id: spr7_nonstandard_hyphenation
+  desc: "Implement non-standard hyphenation"
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/22
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/55
+
+# configuration and user interface ------------------------------
+- id: spr7_configuration_ui_spec
+  desc: "Finish specification of required script configuration and user interface"
+  after: [spr7_start]
+  assignees: [bertfrees, stesk]
+  issues:
+    - https://github.com/snaekobbi/issues/issues/22
+- id: spr7_configuration_ui_impl
+  desc: "Implement required script configuration and user interface"
+  after: [spr7_configuration_ui_spec]
+  before: spr7_end
+  issues:
+    - https://github.com/snaekobbi/issues/issues/22
+
+# gui -----------------------------------------------------------
+- id: spr7_gui_options
+  desc: "Support for default options in GUI, and support for custom option datatypes in GUI, incl. enum/regex."
+  after: [spr7_start]
+  assignees: [josteinaj]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/4
+    - https://github.com/daisy/pipeline-webui/issues/42
+    - https://github.com/daisy/pipeline-webui/issues/34
+    - https://github.com/daisy/pipeline-framework/issues/84
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/61
+- id: spr7_gui_documentation
+  desc: "Improve documentation possibilities of scripts and templates in GUI"
+  assignees: [josteinaj]
+  issues:
+    - https://github.com/daisy/pipeline-webui/issues/47
+    - https://github.com/daisy/pipeline-webui/issues/32
+    - https://github.com/daisy/pipeline-webui/issues/53
+
+# nlb production ready system -----------------------------------
+- id: spr7_nlb_generated_content
+  desc: "Continue working towards a production ready system for NLB"
+  after:
+    - spr6_nlb_generated_content
+    - spr7_start
+  before: spr7_end
+  assignees: [usama49]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/161
+
+# mtm production ready system -----------------------------------
+- id: spr7_dtbook_validation
+  desc: "DTBook validation"
+  after: [spr7_start]
+  before: spr7_end
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/9
+- id: spr7_pef_validation
+  desc: "PEF validation"
+  after: [spr7_start]
+  before: spr7_end
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
+
+# release -------------------------------------------------------
+- id: spr7_webui_release
+  desc: "Release a new version of the web UI"
+  after:
+    - spr7_gui_options
+    - spr7_gui_documentation
+  before: spr7_release_v1_6_0
+  assignees: [josteinaj]
+- id: spr7_integration_v1_6_0
+  desc: "Integration, smoke test and release of v1.6.0"
+  after:
+    - spr7_nonstandard_hyphenation
+    - spr7_volume_breaking_impl_dp2
+    - spr7_tables_impl
+  assignees: [bertfrees]
+  before: spr7_release_v1_6_0
+
+# system tests --------------------------------------------------
+- id: spr7_system_test_tables
+  desc: "Perform system tests for tables"
+  assignees:
+    - KariRudjord
+    - mixa72
+    - stesk
+    - BWestling
+    - JC-MTM
+  after: [spr7_release_v1_5_0]
+  before: spr7_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/36
+    - https://github.com/snaekobbi/sprints/issues/38
+    - https://github.com/snaekobbi/sprints/issues/39
+    - https://github.com/snaekobbi/sprints/issues/46
+- id: spr7_system_test_volume_breaking
+  desc: "Perform system tests for basic volume breaking incl. repeating title page and splitting/repeating table of contents."
+  after: [spr7_release_v1_5_0]
+  before: spr7_test_results
+  assignees:
+    - KariRudjord
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/150
+    - https://github.com/snaekobbi/sprints/issues/159
+    - https://github.com/snaekobbi/sprints/issues/158
+    - https://github.com/snaekobbi/sprints/issues/157
+- id: spr7_system_test_notes
+  desc: "Test foot- and endnotes using MTM script"
+  after: [spr7_start]
+  before: spr7_test_results
+  assignees:
+    - mixa72
+- id: spr7_test_report
+  desc: "Make test report"
+  after: [spr7_test_results]
+  before: spr7_end
   assignees: [denisviro]
