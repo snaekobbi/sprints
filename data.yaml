@@ -640,6 +640,14 @@
   issues:
     - https://github.com/snaekobbi/pipeline-mod-mtm/issues/10
 
+# letter spacing ------------------------------------------------
+- id: spr7_letter_spacing
+  desc: "Fix issue with letter-spacing without hyphenation"
+  after: [spr7_start]
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/163
+
 # release -------------------------------------------------------
 - id: spr7_webui_release
   desc: "Release a new version of the web UI"
@@ -652,6 +660,7 @@
   desc: "Integration, smoke test and release of v1.6.0"
   after:
     - spr7_nonstandard_hyphenation
+    - spr7_letter_spacing
     - spr7_volume_breaking_impl_dp2
     - spr7_tables_impl
   assignees: [bertfrees]
