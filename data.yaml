@@ -515,21 +515,24 @@
 - id: spr7_start
   desc: "Start of sprint #7"
   time: 2016-01-07
-- id: spr7_release_v1_6_0
-  desc: "Software update v1.6.0"
+- id: spr7_release_1
+  desc: "First software update"
   time: 2016-01-20
+- id: spr7_release_2
+  desc: "Second software update"
+  time: 2016-01-27
 - id: spr7_test_results
   desc: "All test results must be submitted"
-  time: 2016-01-26
+  time: 2016-02-02
 - id: spr7_end
   desc: "End of sprint #7"
-  time: 2016-01-29
+  time: 2016-02-05
 
 # tables --------------------------------------------------------
 - id: spr7_tables_spec
   desc: "Support for tables in OBFL and CSS and possibly come up with additional ways of configuring table handling if needed."
   after: [spr7_start]
-  before: spr7_release_v1_6_0
+  before: spr7_release_2
   assignees: [joeha480, bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/36
@@ -615,6 +618,7 @@
     - https://github.com/daisy/pipeline-webui/issues/47
     - https://github.com/daisy/pipeline-webui/issues/32
     - https://github.com/daisy/pipeline-webui/issues/53
+    - https://github.com/daisy/pipeline-webui/issues/56
 
 # nlb production ready system -----------------------------------
 - id: spr7_nlb_generated_content
@@ -654,7 +658,7 @@
   after:
     - spr7_gui_options
     - spr7_gui_documentation
-  before: spr7_release_v1_6_0
+  before: spr7_release_2
   assignees: [josteinaj]
 - id: spr7_integration_v1_6_0
   desc: "Integration, smoke test and release of v1.6.0"
@@ -664,7 +668,7 @@
     - spr7_volume_breaking_impl_dp2
     - spr7_tables_impl
   assignees: [bertfrees]
-  before: spr7_release_v1_6_0
+  before: spr7_release_1
 
 # system tests --------------------------------------------------
 - id: spr7_system_test_tables
@@ -675,7 +679,7 @@
     - stesk
     - BWestling
     - JC-MTM
-  after: [spr7_release_v1_6_0]
+  after: [spr7_release_2]
   before: spr7_test_results
   issues:
     - https://github.com/snaekobbi/sprints/issues/36
@@ -684,7 +688,7 @@
     - https://github.com/snaekobbi/sprints/issues/46
 - id: spr7_system_test_volume_breaking
   desc: "Perform system tests for basic volume breaking incl. repeating title page and splitting/repeating table of contents."
-  after: [spr7_release_v1_6_0]
+  after: [spr7_release_1]
   before: spr7_test_results
   assignees:
     - KariRudjord
