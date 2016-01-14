@@ -666,9 +666,14 @@
     - spr7_nonstandard_hyphenation
     - spr7_letter_spacing
     - spr7_volume_breaking_impl_dp2
-    - spr7_tables_impl
   assignees: [bertfrees]
   before: spr7_release_1
+- id: spr7_integration_v1_7_0
+  desc: "Integration, smoke test and release of v1.7.0"
+  after:
+    - spr7_tables_impl
+  assignees: [bertfrees]
+  before: spr7_release_2
 
 # system tests --------------------------------------------------
 - id: spr7_system_test_tables
