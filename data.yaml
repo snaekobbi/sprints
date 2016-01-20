@@ -518,6 +518,7 @@
 - id: spr7_release_1
   desc: "First software update"
   time: 2016-01-20
+  cancelled: true
 - id: spr7_release_2
   desc: "Second software update"
   time: 2016-01-27
@@ -661,11 +662,6 @@
     - spr7_gui_documentation
   before: spr7_release_2
   assignees: [josteinaj]
-- id: spr7_integration_release_1
-  desc: "Integration, smoke test and release"
-  assignees: [bertfrees]
-  before: spr7_release_1
-  cancelled: true
 - id: spr7_integration_v1_6_0
   desc: "Integration, smoke test and release of v1.6.0"
   after:
