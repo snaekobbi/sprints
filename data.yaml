@@ -564,6 +564,7 @@
     - https://github.com/snaekobbi/sprints/issues/159
     - https://github.com/snaekobbi/sprints/issues/158
     - https://github.com/snaekobbi/sprints/issues/157
+  done: true
     
 # liblouis ------------------------------------------------------
 - id: spr7_liblouis_merge
@@ -612,6 +613,7 @@
     - https://github.com/daisy/pipeline-webui/issues/34
     - https://github.com/daisy/pipeline-framework/issues/84
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/61
+  done: true
 - id: spr7_gui_documentation
   desc: "Improve documentation possibilities of scripts and templates in GUI"
   after: [spr7_start]
@@ -621,7 +623,8 @@
     - https://github.com/daisy/pipeline-webui/issues/32
     - https://github.com/daisy/pipeline-webui/issues/53
     - https://github.com/daisy/pipeline-webui/issues/56
-
+  done: true
+  
 # nlb production ready system -----------------------------------
 - id: spr7_nlb_generated_content
   desc: "Continue working towards a production ready system for NLB"
@@ -662,6 +665,7 @@
     - spr7_gui_documentation
   before: spr7_release_2
   assignees: [josteinaj]
+  done: true
 - id: spr7_integration_v1_6_0
   desc: "Integration, smoke test and release of v1.6.0"
   after:
