@@ -634,6 +634,7 @@
   assignees: [usama49]
   issues:
     - https://github.com/snaekobbi/sprints/issues/161
+  done: true
 
 # mtm production ready system -----------------------------------
 - id: spr7_dtbook_validation
@@ -692,6 +693,7 @@
     - https://github.com/snaekobbi/sprints/issues/38
     - https://github.com/snaekobbi/sprints/issues/39
     - https://github.com/snaekobbi/sprints/issues/46
+  done: true
 - id: spr7_system_test_volume_breaking
   desc: "Perform system tests for basic volume breaking incl. repeating title page and splitting/repeating table of contents."
   after: [spr7_release_2]
@@ -703,12 +705,14 @@
     - https://github.com/snaekobbi/sprints/issues/159
     - https://github.com/snaekobbi/sprints/issues/158
     - https://github.com/snaekobbi/sprints/issues/157
+  done: true
 - id: spr7_system_test_notes
   desc: "Test foot- and endnotes using MTM script"
   after: [spr7_start]
   before: spr7_test_results
   assignees:
     - mixa72
+  done: true
 - id: spr7_test_report
   desc: "Make test report"
   after: [spr7_test_results]
