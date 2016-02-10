@@ -12,7 +12,7 @@ Huboard:
 - [Sprint #4](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%234%22]) (1.10.2015 - 23.10.2015)
 - [Sprint #5](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%235%22]) (5.11.2015 - 27.11.2015)
 - [Sprint #6](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%236%22]) (3.12.2015 - 25.12.2015)
-- [Sprint #7](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%237%22]) (7.01.2016 - 29.01.2016)
-
+- [Sprint #7](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%237%22]) (7.01.2016 - 05.02.2016)
+- [Sprint #8](https://huboard.com/snaekobbi/sprints#/?milestone=[%22sprint%238%22]) (11.02.2016 - 11.03.2016)
 
 [sprints]: https://github.com/snaekobbi/sprints
