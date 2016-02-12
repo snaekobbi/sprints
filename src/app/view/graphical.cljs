@@ -273,6 +273,26 @@
                                                      :stroke "#ffffff"}))
                   (set! (.-innerHTML div-bottom) (str "<h2>" (:desc milestone) "</h2>"
                                                       "Due date: " (:time milestone)))
+                  (when-let [current-task (last ;; order has been reversed somewhere
+                                           (filter #(and (<= (:begin %) (- (:time milestone) now))
+                                                         (>= (:end %) (- (:time milestone) now)))
+                                                   tasks))]
+                    (reset! viewbox-x (- (:x milestone) (/ div-width 2)))
+                    (reset! viewbox-y (+ (:y current-task) (/ (- (:height current-task) div-mid-height) 2)))
+                    (.animateViewBox paper-middle
+                                     @viewbox-x
+                                     @viewbox-y
+                                     width
+                                     height
+                                     700
+                                     "<>")
+                    (.animateViewBox paper-top
+                                     @viewbox-x
+                                     0
+                                     width
+                                     div-top-height
+                                     700
+                                     "<>"))
                   (doall
                    (map #(if (is-milestone? %)
                            (.attr (:path %) (clj->js {:fill (bg-color :bright %) :stroke "#ffffff"}))
@@ -299,12 +319,33 @@
                         (select-task task-or-milestone))))]
             ;; (if (.hasOwnProperty js/window "onhashchange")
             ;;   (set! (.-onhashchange (.-node (:path milestone))) #(...))
-            (let [hash (atom "")]
+            (let [hash (atom nil)]
               (.setInterval js/window
-                            #(when-let [[_ new-hash] (re-matches #"#(.+)" (.-hash (.-location js/window)))]
-                               (when (not (= new-hash @hash))
-                                 (reset! hash new-hash)
-                                 (select-task-or-milestone new-hash)))
+                            (fn []
+                              (if-let [[_ new-hash] (re-matches #"#(.+)" (.-hash (.-location js/window)))]
+                                (when (not (= new-hash @hash))
+                                  (reset! hash new-hash)
+                                  (select-task-or-milestone new-hash))
+                                (when (not (= "" @hash))
+                                  (reset! hash "")
+                                  (when-let [current-task (last ;; order has been reversed somewhere
+                                                           (filter #(and (<= (:begin %) 0) (>= (:end %) 0)) tasks))]
+                                    (reset! viewbox-x 0)
+                                    (reset! viewbox-y (+ (:y current-task) (/ (- (:height current-task) div-mid-height) 2)))
+                                    (.animateViewBox paper-middle
+                                                     @viewbox-x
+                                                     @viewbox-y
+                                                     width
+                                                     height
+                                                     700
+                                                     "<>")
+                                    (.animateViewBox paper-top
+                                                     @viewbox-x
+                                                     0
+                                                     width
+                                                     div-top-height
+                                                     700
+                                                     "<>")))))
                             100)))
           (let [mousedown (atom false)
                 page-x (atom)
