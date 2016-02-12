@@ -531,7 +531,7 @@
 
 # tables --------------------------------------------------------
 - id: spr7_tables_spec
-  desc: "Support for tables in OBFL and CSS and possibly come up with additional ways of configuring table handling if needed."
+  desc: "Support for tables in OBFL and CSS"
   after: [spr7_start]
   before: spr7_release_2
   assignees: [joeha480, bertfrees]
@@ -552,6 +552,7 @@
     - https://github.com/snaekobbi/sprints/issues/46
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/14
     - https://github.com/joeha480/dotify/issues/63
+  done: true
 
 # volume breaking -----------------------------------------------
 - id: spr7_volume_breaking_impl_dp2
@@ -676,6 +677,7 @@
     - spr7_tables_impl
   assignees: [bertfrees]
   before: spr7_release_2
+  done: true
 
 # system tests --------------------------------------------------
 - id: spr7_system_test_tables
