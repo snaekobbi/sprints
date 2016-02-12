@@ -79,16 +79,15 @@
                   longest-path (first (sort-by count > (filter #(some #{id} %) paths)))
                   length (- (count longest-path) 2)
                   index (- (count (take-while (partial not= id) longest-path)) 1)
-                  start (- (:time (get-task (first longest-path) milestones)) now)
+                  begin (- (:time (get-task (first longest-path) milestones)) now)
                   end (- (:time (get-task (last longest-path) milestones)) now)]
               (assoc task
-                :begin (+ start (* (- end start) (/ index length)))
-                :end (+ start (* (- end start) (/ (+ index 1) length))))))
-          ;; sorting doesn't work?
+                :begin (+ begin (* (- end begin) (/ index length)))
+                :end (+ begin (* (- end begin) (/ (+ index 1) length))))))
           tasks (sort (fn [x y]
-                        (if (< (:start x) (:start y))
+                        (if (< (:begin x) (:begin y))
                           true
-                          (if (> (:start x) (:start y))
+                          (if (> (:begin x) (:begin y))
                             false
                             (< (:end x) (:end y)))))
                       tasks)
