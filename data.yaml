@@ -772,6 +772,7 @@
   after:
     - spr8_notes
     - spr8_scripts
+    - spr8_nonstandard_hyphenation
   before: spr8_release
   assignees: [bertfrees]
 
