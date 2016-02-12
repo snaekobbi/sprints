@@ -720,3 +720,109 @@
   after: [spr7_test_results]
   before: spr7_end
   assignees: [denisviro]
+
+# ---------------------------------------------------------------
+# ------------ SPRINT 8 -----------------------------------------
+# ---------------------------------------------------------------
+- id: spr8_start
+  desc: "Start of sprint #8"
+  time: 2016-02-11
+- id: spr8_pre_release
+  desc: "Software update 1.6.1"
+  time: 2016-02-15
+- id: spr8_release
+  desc: "Software update 1.7.0"
+  time: 2016-03-01
+- id: spr8_test_results
+  desc: "All test results must be submitted"
+  time: 2016-03-08
+- id: spr8_end
+  desc: "End of sprint #8"
+  time: 2016-03-11
+
+# notes ---------------------------------------------------------
+- id: spr8_notes
+  desc: "Implement support for foot- and endnotes notes in CSS"
+  after: [spr8_start]
+  assignees: [bertfrees]
+
+# script finalizing ---------------------------------------------
+- id: spr8_scripts
+  desc: "Finalize scripts including default CSS and implementation of all options"
+  after: [spr8_start]
+  assignees:
+    - egli
+    - dkager
+    - usama49
+    - jukkae
+    - stesk
+    - bertfrees
+
+# non-standard hyphenation --------------------------------------
+- id: spr8_nonstandard_hyphenation
+  desc: "Implement non-standard hyphenation"
+  after: [spr8_start]
+  assignees: [usama49]
+  issues:
+    - https://github.com/snaekobbi/pipeline-mod-braille/issues/55
+
+# release -------------------------------------------------------
+- id: spr8_integration_v1_7_0
+  desc: "Integration, smoke test and release of v1.7.0"
+  after:
+    - spr8_notes
+    - spr8_scripts
+  before: spr8_release
+  assignees: [bertfrees]
+
+# system tests --------------------------------------------------
+- id: spr8_system_test_tables_as_lists
+  desc: "Perform more system tests for tables as lists"
+  after: [spr8_start]
+  before: spr8_test_results
+  assignees:
+    - KariRudjord
+    - paivis
+- id: spr8_system_test_tables_as_lists_mtm
+  desc: "Perform more system tests for tables as lists (MTM script)"
+  assignees:
+    - BWestling
+    - JC-MTM
+  after: [spr8_release]
+  before: spr8_test_results
+- id: spr8_system_test_matrix_tables
+  desc: "Perform system tests for matrix tables"
+  assignees:
+    - dkager
+    - stesk
+    - mixa72
+  after: [spr8_pre_release]
+  before: spr8_test_results
+- id: spr8_system_test_volume_breaking
+  desc: "Perform system tests for basic volume breaking"
+  after: [spr8_release]
+  before: spr8_test_results
+  assignees:
+    - paivis
+- id: spr8_system_test_notes
+  desc: "Perform system tests for foot- and endnotes"
+  after: [spr8_release]
+  before: spr8_test_results
+  assignees:
+    - mixa72
+    - stesk
+    - KariRudjord
+- id: spr8_system_test_options
+  desc: "Perform system tests for new UI options"
+  after: [spr8_release]
+  before: spr8_test_results
+  assignees:
+    - BWestling
+    - JC-MTM
+    - stesk
+    - KariRudjord   
+- id: spr8_test_report
+  desc: "Make test report"
+  after: [spr8_test_results]
+  before: spr8_end
+  assignees: [denisviro]
