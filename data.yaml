@@ -745,10 +745,14 @@
   desc: "Implement support for foot- and endnotes notes in CSS"
   after: [spr8_start]
   assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/47
+    - https://github.com/snaekobbi/sprints/issues/48
+    - https://github.com/snaekobbi/sprints/issues/72
 
 # script finalizing ---------------------------------------------
 - id: spr8_scripts
-  desc: "Finalize scripts including default CSS and implementation of all options"
+  desc: "Finalize scripts including default CSS, generated content, and implementation of all options"
   after: [spr8_start]
   assignees:
     - egli
@@ -759,6 +763,8 @@
     - bertfrees
   issues:
     - https://github.com/snaekobbi/sprints/issues/24
+    - https://github.com/snaekobbi/sprints/issues/76
+    - https://github.com/snaekobbi/sprints/issues/170
 
 # non-standard hyphenation --------------------------------------
 - id: spr8_nonstandard_hyphenation
