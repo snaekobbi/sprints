@@ -757,6 +757,8 @@
     - jukkae
     - stesk
     - bertfrees
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/24
 
 # non-standard hyphenation --------------------------------------
 - id: spr8_nonstandard_hyphenation
@@ -765,6 +767,7 @@
   assignees: [usama49]
   issues:
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/55
+    - https://github.com/snaekobbi/sprints/issues/165
 
 # release -------------------------------------------------------
 - id: spr8_integration_v1_7_0
@@ -784,6 +787,8 @@
   assignees:
     - KariRudjord
     - paivis
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/167
 - id: spr8_system_test_tables_as_lists_mtm
   desc: "Perform more system tests for tables as lists (MTM script)"
   assignees:
@@ -791,6 +796,8 @@
     - JC-MTM
   after: [spr8_release]
   before: spr8_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/167
 - id: spr8_system_test_matrix_tables
   desc: "Perform system tests for matrix tables"
   assignees:
@@ -799,6 +806,8 @@
     - mixa72
   after: [spr8_pre_release]
   before: spr8_test_results
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/168
 - id: spr8_system_test_volume_breaking
   desc: "Perform system tests for basic volume breaking"
   after: [spr8_release]
@@ -813,6 +822,10 @@
     - mixa72
     - stesk
     - KariRudjord
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/47
+    - https://github.com/snaekobbi/sprints/issues/48
+    - https://github.com/snaekobbi/sprints/issues/72
 - id: spr8_system_test_options
   desc: "Perform system tests for new UI options"
   after: [spr8_release]
@@ -821,7 +834,9 @@
     - BWestling
     - JC-MTM
     - stesk
-    - KariRudjord   
+    - KariRudjord
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/24
 - id: spr8_test_report
   desc: "Make test report"
   after: [spr8_test_results]
