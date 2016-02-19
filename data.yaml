@@ -774,6 +774,7 @@
   issues:
     - https://github.com/snaekobbi/pipeline-mod-braille/issues/55
     - https://github.com/snaekobbi/sprints/issues/165
+  cancelled: true
 
 # release -------------------------------------------------------
 - id: spr8_integration_v1_7_0
