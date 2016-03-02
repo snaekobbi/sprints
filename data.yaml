@@ -749,6 +749,7 @@
     - https://github.com/snaekobbi/sprints/issues/47
     - https://github.com/snaekobbi/sprints/issues/48
     - https://github.com/snaekobbi/sprints/issues/72
+  done: true
 
 # script finalizing ---------------------------------------------
 - id: spr8_scripts
@@ -785,6 +786,7 @@
     - spr8_nonstandard_hyphenation
   before: spr8_release
   assignees: [bertfrees]
+  done: true
 
 # system tests --------------------------------------------------
 - id: spr8_system_test_tables_as_lists
