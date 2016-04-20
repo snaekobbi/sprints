@@ -851,3 +851,234 @@
   after: [spr8_test_results]
   before: spr8_end
   assignees: [denisviro]
+
+# ---------------------------------------------------------------
+# ------------ SPRINT 9 -----------------------------------------
+# ---------------------------------------------------------------
+- id: spr9_start
+  desc: "Start of sprint #9"
+  time: 2016-04-19
+- id: spr9_release
+  desc: "Software update 1.8.0"
+  time: 2016-05-02
+- id: spr9_test_results
+  desc: "All test results must be submitted"
+  time: 2016-05-09
+- id: spr9_end
+  desc: "End of sprint #9"
+  time: 2016-05-12
+  
+# script optimization -------------------------------------------
+
+- id: spr9_scripts
+  desc: "Optimize agency-specific scripts (boilerplate, CSS, options, symbols list, translation fixes, ...)"
+  after: [spr9_evaluate_variables]
+  assignees:
+    - dkager
+    - jukkae
+    - usama49
+    - egli
+    - joeha480
+    - bertfrees
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/187
+    - https://github.com/snaekobbi/sprints/issues/98
+    - https://github.com/snaekobbi/sprints/issues/176
+    - https://github.com/snaekobbi/sprints/issues/181
+    
+# epub to pef ---------------------------------------------------
+
+- id: spr9_epub_to_pef_nlb
+  desc: "EPUB support for NLB"
+  after: [spr9_start]
+  assignees: [usama49]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/174
+- id: spr9_epub_to_pef_mtm
+  desc: "Start looking into EPUB support for MTM"
+  after: [spr9_start]
+  before: spr9_end
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/174
+
+# editing format ------------------------------------------------
+
+- id: spr9_editing_format
+  desc: "Specify and implement an editing format, and create a script for 'finalizing' an edited file"
+  after: [spr9_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/2
+    - https://github.com/snaekobbi/sprints/issues/3 
+- id: spr9_obfl_authoring_mode
+  desc: "Create a basic Oxygen authoring mode for OBFL"
+  after: [spr9_start]
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/2
+    - https://github.com/snaekobbi/sprints/issues/3
+
+# double letter spacing -----------------------------------------
+
+- id: spr9_letter_spacing
+  desc: "Fix issue with letter-spacing without hyphenation"
+  after: [spr9_start]
+  assignees: [jukkae]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/179
+    
+# non-standard hyphenation --------------------------------------
+
+- id: spr9_non_standard_hyphenation
+  desc: "Support non-standard hyphenation"
+  after: [spr9_start]
+  before: spr9_end
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/178
+    
+# volume breaking -----------------------------------------------
+
+- id: spr9_volume_breaking
+  desc: "Implement support for forcing, preferring and discouraging volume break points in Dotify"
+  after: [spr9_start]
+  before: spr9_end
+  assignees: [joeha480]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/169
+    - https://github.com/snaekobbi/sprints/issues/73
+    
+# number formatting ---------------------------------------------
+
+- id: spr9_number_formatting
+  desc: "Implement full support for symbols() function"
+  after: [spr9_start]
+  before: spr9_end
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/147
+  
+# evaluate variables --------------------------------------------
+
+- id: spr9_evaluate_variables
+  desc: "Implement variables for total number of braille pages or sheets contained in the current volume or book"
+  after: [spr9_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/160
+    - https://github.com/joeha480/dotify/issues/198
+    
+# windows support -----------------------------------------------
+
+- id: spr9_windows_webui
+  desc: "Distributable for Windows"
+  after: [spr9_start]
+  assignees: [josteinaj]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/188
+- id: spr9_windows_engine
+  desc: "Fix windows-related bugs"
+  after: [spr9_start]
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/188
+    
+# profiling -----------------------------------------------------
+
+- id: spr9_profiling
+  desc: "Profile the entire application to find performance issues"
+  after: [spr9_start]
+  before: spr9_end
+  assignees:
+    - josteinaj
+    - bertfrees
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/189
+  
+# web ui ---------------------------------------------------------
+
+- id: spr9_webui
+  desc: "Various web UI optimizations"
+  after: [spr9_start]
+  before: spr9_end
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/190
+    
+# release -------------------------------------------------------
+
+- id: spr9_integration_v1.8.0
+  desc: "Integration, smoke test and release of v1.8.0"
+  after:
+    - spr9_scripts
+    - spr9_letter_spacing
+    - spr9_non_standard_hyphenation
+    - spr9_epub_to_pef_nlb
+  before: spr9_release
+  assignees: [bertfrees]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/173
+  
+# system tests --------------------------------------------------
+
+- id: spr9_test_script_mtm
+  desc: "Test improvements to MTM script (option to leave out capital signs, print page break line, improved table layout, ...)"
+  after: [spr9_release]
+  before: spr8_test_results
+  assignees:
+    - JC-MTM
+    - BWestling
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/187
+    - https://github.com/snaekobbi/sprints/issues/185
+    - https://github.com/snaekobbi/sprints/issues/182
+- id: spr9_test_script_celia
+  desc: "Test improvements to Celia script (improved double letter spacing, BRF fix, ...)"
+  after: [spr9_release]
+  before: spr8_test_results
+  assignees: [paivis]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/187
+    - https://github.com/snaekobbi/sprints/issues/179
+- id: spr9_test_script_nlb
+  desc: "Test improvements to NLB script (tables, notes numbering, non-standard hyphenation, EPUB support, ...)"
+  after: [spr9_release]
+  before: spr8_test_results
+  assignees: [KariRudjord]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/187
+    - https://github.com/snaekobbi/sprints/issues/178
+- id: spr9_test_script_sbs
+  desc: "Test improvements to SBS script"
+  after: [spr9_release]
+  before: spr8_test_results
+  assignees: [mixa72]
+  issues:
+    - https://github.com/snaekobbi/sprints/issues/187
+    - https://github.com/snaekobbi/sprints/issues/176
+- id: spr9_test_editing_format
+  desc: "Test editing format (editing in Oxygen + finalizing conversion)"
+  after:
+    - spr9_editing_format
+    - spr9_obfl_authoring_mode
+  before: spr9_end
+  assignees:
+    - stesk
+    - KariRudjord
+    - JC-MTM
+    - mixa72
+    - paivis
+- id: spr9_test_windows_webui
+  desc: "Test web UI on Windows"
+  after: [spr9_windows_webui]
+  before: spr9_end
+  assignees:
+    - dkager
+    - jukkae
+- id: spr9_test_windows_engine
+  desc: "Test Pipeline engine on Windows"
+  after: [spr9_windows_engine]
+  before: spr9_end
+  assignees:
+    - dkager
+    - jukkae
