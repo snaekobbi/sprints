@@ -885,7 +885,8 @@
     - https://github.com/snaekobbi/sprints/issues/98
     - https://github.com/snaekobbi/sprints/issues/176
     - https://github.com/snaekobbi/sprints/issues/181
-    
+  done: true
+
 # epub to pef ---------------------------------------------------
 
 - id: spr9_epub_to_pef_nlb
@@ -894,6 +895,7 @@
   assignees: [usama49]
   issues:
     - https://github.com/snaekobbi/sprints/issues/174
+  done: true
 - id: spr9_epub_to_pef_mtm
   desc: "Start looking into EPUB support for MTM"
   after: [spr9_start]
@@ -937,7 +939,8 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/178
-    
+  done: true
+
 # volume breaking -----------------------------------------------
 
 - id: spr9_volume_breaking
@@ -958,7 +961,8 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/147
-  
+  done: true
+
 # evaluate variables --------------------------------------------
 
 - id: spr9_evaluate_variables
@@ -977,6 +981,7 @@
   assignees: [josteinaj]
   issues:
     - https://github.com/snaekobbi/sprints/issues/188
+  done: true
 - id: spr9_windows_engine
   desc: "Fix windows-related bugs"
   after: [spr9_start]
@@ -1004,7 +1009,8 @@
   before: spr9_end
   issues:
     - https://github.com/snaekobbi/sprints/issues/190
-    
+  done: true
+
 # release -------------------------------------------------------
 
 - id: spr9_integration_v1.8.0
@@ -1018,7 +1024,8 @@
   assignees: [bertfrees]
   issues:
     - https://github.com/snaekobbi/sprints/issues/173
-  
+  done: true
+
 # system tests --------------------------------------------------
 
 - id: spr9_test_script_mtm
@@ -1070,7 +1077,8 @@
     - paivis
   issues:
     - https://github.com/snaekobbi/sprints/issues/2
-    - https://github.com/snaekobbi/sprints/issues/3    
+    - https://github.com/snaekobbi/sprints/issues/3
+  cancelled: true
 - id: spr9_test_windows_webui
   desc: "Test web UI on Windows"
   after: [spr9_windows_webui]
